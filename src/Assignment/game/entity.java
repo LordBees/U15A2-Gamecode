@@ -65,5 +65,5 @@ public class entity {
             return true;
         }
     }
-    //public void do_heal()
+    //public void do_heal()//allow for healing of ent
 }
