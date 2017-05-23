@@ -14,6 +14,7 @@ public class entity {
     protected int atk;//attack roller
     protected int atk_m;//attack modifier
     protected int def;//defence modifier
+    protected int num_heals;//heals
     protected String stance = "None";//set stance //None,Attacking,Defending,Healing;
     protected String E_name;// = "MissingName";
 
@@ -66,4 +67,10 @@ public class entity {
         }
     }
     //public void do_heal()//allow for healing of ent
+    public void do_heal(item itemx){//heal from an item
+        this.heal(itemx.I_value);
+    }
+    public String getE_name() {
+        return E_name;
+    }
 }

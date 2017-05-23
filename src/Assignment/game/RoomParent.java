@@ -7,6 +7,7 @@ public class RoomParent {
     //has array of execuatable objects that are passed to the  invoker
     //attributes
     protected entity [] room_contents;
+    protected String enterstring = "this is the parent";
     //protected ;
     protected int roomid;
     protected int nextid;
@@ -21,6 +22,7 @@ public class RoomParent {
 
     //methods
     public void enterroom(){//called when player enters room
+        System.out.println(this.enterstring);
 
     }
     public void winroom(){//called if victory condition met in room

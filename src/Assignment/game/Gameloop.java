@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Created by Spartan 2 on 2017-05-19.
  */
 public class Gameloop {
+    private roomhandler rtracker = new roomhandler();//tracks roomdata
     private Scanner cons_input = new Scanner(System.in);
     private boolean isrunning = true;//if running
     String gamestate = "D";//gamestate (what is happening in game/)
@@ -17,6 +18,7 @@ public class Gameloop {
     private String winstate = "fail";//good,bad
     Gameloop(){
         //setup
+        xrooms = new RoomParent[] {new ROOM_empty()};
 
         ///window setup
 
@@ -34,7 +36,7 @@ public class Gameloop {
         changegamestate("M");//change to starting state
         while (isrunning){
             //this.chs = get_user_input();
-            switch (this.gamestate){//switch for gamestate things
+            switch (this.gamestate.toUpperCase()){//switch for gamestate things
                 case "M"://main menu
                     System.out.println("select a new game (N) or how to play(H)");
                     this.chs = get_user_input();
@@ -67,13 +69,16 @@ public class Gameloop {
                     break;
 
                 case "BLANK"://nothing room
+
                     break;
 
                 case "START"://starting room (begiinning)b boss
                     System.out.println("you are in a room with nothing really@exposition");
                     System.out.println("Do You wish to go left or right?(L/R)");
                     this.chs = get_user_input();
-                    if (this.chs.equals("L"))
+                    if (this.chs.equals("L")){
+
+                    }
                     break;
 
                 case "D"://default
