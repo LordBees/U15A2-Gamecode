@@ -3,6 +3,7 @@ package Assignment.game;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.io.File;
+import java.net.URL;
 
 public class Clip {
 
@@ -29,6 +30,7 @@ public class Clip {
     public static Clip load(String pos){
         try {
             File f = new File(pos);
+            URL url = this.getClass().getClassLoader().getResource("test.wav");
             AudioClip clip = Applet.newAudioClip(f.toURL());
             Clip res = new Clip(clip);
             clip.play();
