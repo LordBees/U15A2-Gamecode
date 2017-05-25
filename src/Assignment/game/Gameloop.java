@@ -6,7 +6,8 @@ import java.util.Scanner;
  * Created by Spartan 2 on 2017-05-19.
  */
 public class Gameloop {
-    private Clip bgmclip;
+    //private Clip bgmclip;
+    private SND_handler_main bgmclip = new SND_handler_main();
 
     private roomhandler rtracker = new roomhandler();//tracks roomdata
     private Scanner cons_input = new Scanner(System.in);
@@ -23,7 +24,8 @@ public class Gameloop {
         //setup
         xrooms = new RoomParent[] {new ROOM_empty()};
         //this.bgmclip.load("src/Assignment/game/Song.wav");
-        this.bgmclip.load("F://downloads//U15A2-Gamecode-master (1)//U15A2-Gamecode-master/RES/Song.wav");
+
+        this.bgmclip.load("Song.wav",true);
 
         ///window setup
 
