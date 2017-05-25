@@ -18,6 +18,11 @@ public class entity {
     protected String stance = "None";//set stance //None,Attacking,Defending,Healing;
     protected String E_name;// = "MissingName";
 
+    //snd
+    protected String snd_DAM = "test.wav";
+    protected String snd_HEAL = "test.wav";
+    protected String snd_ATK = "test.wav";
+
 
     entity(){
         //

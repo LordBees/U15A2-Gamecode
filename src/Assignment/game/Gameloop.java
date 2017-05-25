@@ -6,6 +6,8 @@ import java.util.Scanner;
  * Created by Spartan 2 on 2017-05-19.
  */
 public class Gameloop {
+    private Clip bgmclip;
+
     private roomhandler rtracker = new roomhandler();//tracks roomdata
     private Scanner cons_input = new Scanner(System.in);
     private boolean isrunning = true;//if running
@@ -16,9 +18,12 @@ public class Gameloop {
     //private window [] window array conatining windows
     private  RoomParent []  xrooms ;//class containing all room types instanced as required
     private String winstate = "fail";//good,bad
+
     Gameloop(){
         //setup
         xrooms = new RoomParent[] {new ROOM_empty()};
+        //this.bgmclip.load("src/Assignment/game/Song.wav");
+        this.bgmclip.load("F://downloads//U15A2-Gamecode-master (1)//U15A2-Gamecode-master/RES/Song.wav");
 
         ///window setup
 
@@ -27,6 +32,7 @@ public class Gameloop {
     }
     public void run(){
         System.out.println("-<starting game");
+        this.bgmclip.play();
         gamemain();
         System.out.println("-<Quitting game");
     }

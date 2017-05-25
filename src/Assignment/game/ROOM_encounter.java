@@ -6,23 +6,25 @@ package Assignment.game;
 public class ROOM_encounter extends RoomParent {
 
     //attr
-    protected entity [] foes;
+    protected entity[] foes;
     private fight currentfight;
+    protected String Fightbgm;
 
     //
-    ROOM_encounter(){
+    ROOM_encounter() {
         //this.foes.
         //this.foes
 
     }
 
     //
-    protected void room_fight(){
+    protected void room_fight() {
 
     }
 
     public void xenterroom() {
-        for (int i=0;i>this.foes.length;i++){//fight everything in room
-            this.currentfight = new fight(player)
+        for (int i = 0; i > this.foes.length; i++) {//fight everything in room
+            //this.currentfight = new fight(this.player);//@@@
         }
+    }
 }

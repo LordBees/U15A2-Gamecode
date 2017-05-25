@@ -14,10 +14,10 @@ public class fight {
 
     fight(player playerx,entity foe) {
         this.playerx = playerx;
-        this.foe = foe
+        this.foe = foe;
     }
 
-    fighterloop(){
+    private void fighterloop(){
         while (fighting){
             if (playerx.do_isdead() == true) {//if player dies
                 System.out.println("you died!");
@@ -77,6 +77,9 @@ public class fight {
 
     }
     //input methd
-    public String getinp(){}
+    public String getinp(){
+        String inx = "";
+        return inx;
+    }
 
 }
