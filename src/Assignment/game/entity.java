@@ -10,20 +10,20 @@ public class entity {
     protected Random RNG = new Random();//rng
 
     //actual attributes
-    protected int health;//health
-    protected int atk;//attack roller
-    protected int atk_m;//attack modifier
-    protected int def;//defence modifier
+    protected int health = 100;//health
+    protected int atk = 1;//attack roller
+    protected int atk_m =1;//attack modifier
+    protected int def = 1;//defence modifier
     protected int num_heals;//heals
     protected String stance = "None";//set stance //None,Attacking,Defending,Healing;
-    protected String E_name;// = "MissingName";
+    protected String E_name = "Nullmonster";// = "MissingName";
 
     //snd
     protected String snd_DAM = "test.wav";
     protected String snd_HEAL = "test.wav";
     protected String snd_ATK = "test.wav";
 
-
+/**
     entity(){
         //
 
@@ -35,6 +35,7 @@ public class entity {
         this.E_name = "Nullmonster";
 
     }
+ */
     //methods for direct interaction
     protected void damage(int damagedone){//damage the entity
         this.health = this.health-damagedone;

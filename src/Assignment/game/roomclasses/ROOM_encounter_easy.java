@@ -1,4 +1,7 @@
-package Assignment.game;
+package Assignment.game.roomclasses;
+
+import Assignment.game.Ents.ENT_enemy_easy;
+import Assignment.game.entity;
 
 /**
  * Created by Spartan 2 on 2017-05-19.

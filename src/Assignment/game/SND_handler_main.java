@@ -21,43 +21,47 @@ public class SND_handler_main {
     private boolean isplaying = false;
     private boolean isbgm = false;
     private String filen = "";
+    private String lfilen = "";//last filename
 
     //SND_handler_main(String Xfile,boolean xisbgm) {
     public void load(String Xfile,boolean xisbgm){
-        this.isbgm = xisbgm;
-        this.filen =  Xfile;
+
+        if (this.lfilen.equals(Xfile)&&(this.isbgm = xisbgm)){//no point in reloading if state same
+            System.out.println("skipped loading as args same");
+        }
+        else {
+            this.isbgm = xisbgm;
+            this.lfilen = this.filen;
+            this.filen = Xfile;
 
 
-        try {
-            String current = new java.io.File( "." ).getCanonicalPath();
-            System.out.println(current+"\\res\\"+Xfile);
-            File file = new File(current+"\\res\\"+Xfile);
-            if (file.exists()) {
-                Clip clipsnd = AudioSystem.getClip();
-                AudioInputStream ais = AudioSystem.getAudioInputStream(file.toURI().toURL());
-                clipsnd.open(ais);
-                this.clipsnd = clipsnd;
+            try {
+                String current = new java.io.File(".").getCanonicalPath();
+                System.out.println(current + "\\res\\" + Xfile);
+                File file = new File(current + "\\res\\" + Xfile);
+                if (file.exists()) {
+                    Clip clipsnd = AudioSystem.getClip();
+                    AudioInputStream ais = AudioSystem.getAudioInputStream(file.toURI().toURL());
+                    clipsnd.open(ais);
+                    this.clipsnd = clipsnd;
+                } else {
+                    throw new RuntimeException("Sound: file not found: " + Xfile);
+                }
+            } catch (MalformedURLException e) {
+                throw new RuntimeException("Sound: Malformed URL: " + e);
+            } catch (UnsupportedAudioFileException e) {
+                throw new RuntimeException("Sound: Unsupported Audio File: " + e);
+            } catch (IOException e) {
+                throw new RuntimeException("Sound: Input/Output Error: " + e);
+            } catch (LineUnavailableException e) {
+                throw new RuntimeException("Sound: Line Unavailable: " + e);
             }
-            else {
-                throw new RuntimeException("Sound: file not found: " + Xfile);
-            }
-        }
-        catch (MalformedURLException e) {
-            throw new RuntimeException("Sound: Malformed URL: " + e);
-        }
-        catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException("Sound: Unsupported Audio File: " + e);
-        }
-        catch (IOException e) {
-            throw new RuntimeException("Sound: Input/Output Error: " + e);
-        }
-        catch (LineUnavailableException e) {
-            throw new RuntimeException("Sound: Line Unavailable: " + e);
         }
     }
     public String resolvename(){
         return this.sndpath+this.filen;//test
     }
+
     public void play(){
         clipsnd.setFramePosition(0);  // Must always rewind!
         if (this.isbgm) {

@@ -8,10 +8,12 @@ public class RoomParent {
     //attributes
     protected entity [] room_contents;
     protected String enterstring = "this is the parent";
+    protected String roombgm = "Test.wav";
     //protected ;
-    protected int roomid;
-    protected int nextid;
+    protected int roomid =0;
+    protected int nextid =0;
     //constructor
+    /**
     RoomParent(){//int xroomid,int xnextid){
         //this.roomid=xroomid;
         //this.nextid=xnextid;
@@ -19,6 +21,7 @@ public class RoomParent {
         this.nextid = 0;
 
     }
+     */
 
     //methods
     public void enterroom(){//called when player enters room

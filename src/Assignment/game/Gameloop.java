@@ -1,5 +1,7 @@
 package Assignment.game;
 
+import Assignment.game.roomclasses.ROOM_empty;
+
 import java.util.Scanner;
 
 /**
@@ -25,7 +27,7 @@ public class Gameloop {
         xrooms = new RoomParent[] {new ROOM_empty()};
         //this.bgmclip.load("src/Assignment/game/Song.wav");
 
-        this.bgmclip.load("Song.wav",true);
+        this.bgmclip.load("Menu.wav",true);
 
         ///window setup
 
@@ -107,5 +109,9 @@ public class Gameloop {
     public void changegamestate(String new_gamestate){
         this.last_gamestate = this.gamestate;
         this.gamestate = new_gamestate;
+    }
+    public void changemusic(String newmus){
+        this.bgmclip.load(newmus,true);
+        this.bgmclip.play();
     }
 }

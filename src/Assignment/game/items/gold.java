@@ -1,4 +1,7 @@
-package Assignment.game;
+package Assignment.game.items;
+
+import Assignment.game.item;
+import Assignment.game.player;
 
 /**
  * Created by Spartan 2 on 2017-05-19.

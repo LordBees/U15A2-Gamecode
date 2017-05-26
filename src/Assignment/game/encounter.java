@@ -9,11 +9,11 @@ public class encounter extends RoomParent {
     protected entity [] foes;
 
     //
-    encounter(){
+    //encounter(){
         //this.foes.
         //this.foes
 
-    }
+    //}
 
     //
     protected void room_fight(){

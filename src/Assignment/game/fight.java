@@ -17,15 +17,18 @@ public class fight {
         this.foe = foe;
     }
 
-    private void fighterloop(){
+    private boolean fighterloop(){
+        boolean playersurvived = false;
         while (fighting){
             if (playerx.do_isdead() == true) {//if player dies
                 System.out.println("you died!");
                 this.fighting = false;
+                playersurvived = false;
             }
             else if (foe.do_isdead() == true){//if foe dies
                 this.fighting = false;
                 System.out.println("you defeated a "+foe.getE_name());
+                playersurvived = true;
             }
             else{
                 //fight
@@ -55,6 +58,7 @@ public class fight {
                 }
             }
         }
+        return playersurvived;
     }
     public void playerattack(){
         this.playerx.do_attack(this.foe);
