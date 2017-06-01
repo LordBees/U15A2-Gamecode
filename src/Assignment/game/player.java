@@ -1,5 +1,6 @@
 package Assignment.game;
 
+import Assignment.game.items.Ssword;
 import Assignment.game.items.hvial;
 
 /**
@@ -69,7 +70,7 @@ public class player extends entity {
     }
     public void addsword(){
         if (this.inventory[1].I_name !="SuperSword")
-            this.inventory[1]
+            this.inventory[1] = new Ssword();
     }
     public String get_invbyslot(int slotno){
         return this.inventory[slotno].I_name;//returns name of item, in slot
