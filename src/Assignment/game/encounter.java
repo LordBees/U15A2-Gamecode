@@ -16,7 +16,17 @@ public class encounter extends RoomParent {
     //}
 
     //
-    protected void room_fight(){
+    protected void room_fight(player playerx){//take player data for fighting
+        boolean playersurvived = false;
+        fight currentfight;
+        for (int i=0;i>this.foes.length;i++){
+            currentfight = new fight(playerx,foes[i]);
+            playersurvived = currentfight.fighterloop();
+            if (playersurvived = false){
+                break;
+            }
+
+        }
 
     }
 }

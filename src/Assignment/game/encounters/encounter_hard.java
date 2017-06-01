@@ -1,6 +1,8 @@
 package Assignment.game.encounters;
 
 import Assignment.game.Ents.ENT_enemy_easy;
+import Assignment.game.Ents.ENT_enemy_hard;
+import Assignment.game.Ents.ENT_enemy_med;
 import Assignment.game.encounter;
 import Assignment.game.entity;
 
@@ -11,8 +13,8 @@ public class encounter_hard extends encounter {
     //
 
     //
-    encounter_hard(){
-        this.foes = new entity[]{new ENT_enemy_easy()};
+    public encounter_hard(){
+        this.foes = new entity[]{new ENT_enemy_med(),new ENT_enemy_hard()};
     }
 
     //

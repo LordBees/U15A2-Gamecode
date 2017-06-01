@@ -11,7 +11,7 @@ public class encounter_easy extends encounter {
     //
 
     //
-    encounter_easy(){
+    public encounter_easy(){
         this.foes = new entity[]{new ENT_enemy_easy()};
     }
 

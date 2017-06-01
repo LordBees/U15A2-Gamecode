@@ -17,7 +17,7 @@ public class fight {
         this.foe = foe;
     }
 
-    private boolean fighterloop(){
+    public boolean fighterloop(){
         boolean playersurvived = false;
         while (fighting){
             if (playerx.do_isdead() == true) {//if player dies

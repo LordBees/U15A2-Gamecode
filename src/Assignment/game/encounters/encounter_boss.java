@@ -1,5 +1,6 @@
 package Assignment.game.encounters;
 
+import Assignment.game.Ents.ENT_enemy_boss;
 import Assignment.game.Ents.ENT_enemy_easy;
 import Assignment.game.encounter;
 import Assignment.game.entity;
@@ -11,8 +12,8 @@ public class encounter_boss extends encounter {
     //
 
     //
-    encounter_boss(){
-        this.foes = new entity[]{new ENT_enemy_easy()};
+    public encounter_boss(){
+        this.foes = new entity[]{new ENT_enemy_boss()};
     }
 
     //

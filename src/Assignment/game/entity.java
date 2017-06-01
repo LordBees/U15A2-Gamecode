@@ -79,4 +79,19 @@ public class entity {
     public String getE_name() {
         return E_name;
     }
+    public int getatk(){
+        return this.atk;
+    }
+    public int getAtk_m(){
+        return this.atk_m;
+    }
+    public int getDef(){
+        return this.def;
+    }
+    public int getHealth(){
+        return this.health;
+    }
+    public int getNum_heals(){
+        return this.num_heals;
+    }
 }

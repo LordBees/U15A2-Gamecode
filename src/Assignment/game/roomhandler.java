@@ -10,6 +10,10 @@ public class roomhandler {
     private int nextroom;
 
 
+
+    private int[] forks;
+
+
     //
 
     //
@@ -35,5 +39,18 @@ public class roomhandler {
         this.nextroom = nextroom;
     }
 
+    public int[] getForks() {
+        return forks;
+    }
 
+    public void setForks(int[] forks) {
+        this.forks = forks;
+    }
+    public int nforks() {
+        return this.forks.length;
+    }
+
+    public void loadroom(RoomParent nextroom){
+
+    }
 }

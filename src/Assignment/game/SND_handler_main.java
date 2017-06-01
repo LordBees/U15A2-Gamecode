@@ -30,6 +30,11 @@ public class SND_handler_main {
             System.out.println("skipped loading as args same");
         }
         else {
+            //if(clipsnd.isRunning()) {
+            //    this.clipsnd.stop();
+            //    this.clipsnd.flush();
+            //}
+
             this.isbgm = xisbgm;
             this.lfilen = this.filen;
             this.filen = Xfile;
@@ -63,6 +68,7 @@ public class SND_handler_main {
     }
 
     public void play(){
+        //this.isplaying = true
         clipsnd.setFramePosition(0);  // Must always rewind!
         if (this.isbgm) {
             clipsnd.loop(-1);

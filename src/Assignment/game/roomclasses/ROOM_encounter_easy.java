@@ -10,7 +10,7 @@ public class ROOM_encounter_easy extends ROOM_encounter {
     //
 
     //
-    ROOM_encounter_easy(){
+    public ROOM_encounter_easy(){
 
         this.foes = new entity[]{new ENT_enemy_easy()};
     }

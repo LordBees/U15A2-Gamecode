@@ -51,7 +51,39 @@ public class player extends entity {
             this.num_heals -- ;
         }
     }
-    public void addheal(int numh){
-
+    public void addheal(int numh){//adds potions
+        this.num_heals = this.num_heals+numh;
     }
+
+    public void addto_atk(int additional){//adds to attack value
+        this.atk = this.atk+additional;
+    }
+    public void addto_def(int additional){//adds to defence value
+        this.def = this.def+additional;
+    }
+    public void addto_health(int additional){//adds to raw health vaue
+        this.health = this.health+additional;
+    }
+    public void addto_atkmod(int additional){//adds to attackmod
+        this.atk_m = this.atk_m+additional;
+    }
+    public void addsword(){
+        if (this.inventory[1].I_name !="SuperSword")
+            this.inventory[1]
+    }
+    public String get_invbyslot(int slotno){
+        return this.inventory[slotno].I_name;//returns name of item, in slot
+    }
+    public int hassword(){
+        if (get_invbyslot(1).equals("SuperSword")){
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+//    public void addto_numheals(){
+//
+    //}
+
 }
