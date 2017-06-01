@@ -29,6 +29,7 @@ public class roomhandler {
             if (this.get_Croomid() == 3){
                 this.set_forks(new int[]{4,5});
             }
+            System.out.println("roomforked! : "+this.get_Croomid());
         }
     }
     public int get_Croomid(){
@@ -47,6 +48,9 @@ public class roomhandler {
     //special functions
     public void rewardroomgiver(player target){
         loadedroom.givereward(target);
+    }
+    public entity[] getfoescombat(){
+        return loadedroom.foes;
     }
 
     //forks for shop

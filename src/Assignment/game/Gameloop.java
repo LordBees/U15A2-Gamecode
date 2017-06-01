@@ -34,13 +34,15 @@ public class Gameloop {
 
     private String chs;// user input
     //private window [] window array conatining windows
-    private  RoomParent []  xrooms ;//class containing all room types instanced as required
+    //private  RoomParent []  xrooms ;//class containing all room types instanced as required
+    private RoomParent[] xrooms = new RoomParent[20];
     private String winstate = "fail";//good,bad
 
     Gameloop(){
         //setup
         //xrooms = new RoomParent[] {new ROOM_empty()};
         //this is the roomtable
+        /**
         xrooms  = new RoomParent[] {new ROOM_loot(),                                        new ROOM_encounter_easy(),
                                                                 new ROOM_shop(),
                                     new ROOM_encounter_med(),                               new ROOM_empty(),
@@ -58,6 +60,28 @@ public class Gameloop {
                                                                 new ROOM_encounter_boss()};
                                     ///                     goodending or badending
 
+
+        */
+        xrooms[0] = new ROOM_loot();
+        xrooms[1] = new ROOM_encounter_easy();
+        xrooms[2] = new ROOM_shop();
+        xrooms[3] = new ROOM_encounter_med();
+        xrooms[4] = new ROOM_empty();
+        xrooms[5] = new ROOM_encounter_med();
+        xrooms[6] = new ROOM_encounter_hard();
+        xrooms[7] = new ROOM_loot();
+        xrooms[8] = new ROOM_loot();
+        xrooms[9] = new ROOM_empty();
+        xrooms[10] = new ROOM_loot();
+        xrooms[11] = new ROOM_shop();
+        xrooms[12] = new ROOM_encounter_easy();
+        xrooms[13] = new ROOM_encounter_med();
+        xrooms[14] = new ROOM_encounter_hard();
+        xrooms[15] = new ROOM_empty();
+        xrooms[16] = new ROOM_loot();
+        xrooms[17] = new ROOM_loot();
+        xrooms[18] = new ROOM_shop();
+        xrooms[19] = new ROOM_encounter_boss();
 
 
         ///room id and data setup
@@ -156,6 +180,7 @@ public class Gameloop {
             * this is how the room data is managed if any changes are needed
             */
            //rdatx//gamestate
+           //if(gstat.equals("SHOP")){//if loop on shop ignore getting gstate--need2fix
            gstat = rtracker.get_type();//if room changes then change state
            System.out.println("GS-->:"+gamestate);
 
@@ -296,6 +321,8 @@ public class Gameloop {
                            }
                            break;
                        case "L"://leave shop
+                           //
+                           //gstat = "FORK";
                            break;
 
                    }
@@ -317,14 +344,49 @@ public class Gameloop {
                    rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
 
                    break;
+
                case "FIGHT":
                    System.out.println("you are in a room with some monsters");
                    //printlnx(rtracker.);
-                   chs = this.get_user_input();
+                   //chs = this.get_user_input();
+                   entity[] thisfoes = new entity[5];//this should be 4
                    fight currentfight;
-                   currentfight = new fight(phero,m)
+
+                   System.out.println("DEBUG fightingmx:"+thisfoes.length+"rtrackerrrom:"+rtracker.get_Croomid());
+                   thisfoes = rtracker.getfoescombat();
+
+                   System.out.println("DEBUG fightingm:"+thisfoes.length);
+                   for(int i =0;i<thisfoes.length;i++){
+                       currentfight = new fight(phero,thisfoes[i]);
+                       if (!currentfight.fighterloop());{
+                           gstat = "DIED";}
+                       }
+                   rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
+
+
+                   //currentfight = new fight(phero,m)
                    break;
 
+               case "BOSS":
+                   System.out.println("this is the BOSS!!!");
+
+                   break;
+
+               case "DIED":
+                   System.out.println("You died!! game over");
+                   break;
+               case "RSET":
+                   System.out.println("do you want to retry(y/n)");
+                   chs = this.get_user_input();
+                   if (chs.toUpperCase().equals("Y")){
+                       System.out.println("restarting game >UNIMP");
+                    }
+                    else if (chs.toUpperCase().equals("N")){
+                       this.isrunning = false;
+                   }
+                   else{
+                        System.out.println("incorrect input, please try again");
+                   }
                default:
                    System.out.println("GSERROR!!!");
                    break;

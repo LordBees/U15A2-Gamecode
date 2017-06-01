@@ -10,6 +10,7 @@ import java.util.Random;
 public class RoomParent {
     //has array of execuatable objects that are passed to the  invoker
     //attributes
+    protected entity[] foes;
     protected entity [] room_contents;
     protected String enterstring = "this is the parent";
     protected String roombgm = "Test.wav";

@@ -11,7 +11,7 @@ import Assignment.game.encounter;
 public class ROOM_encounter extends RoomParent {
 
     //attr
-    protected entity[] foes;
+    //protected entity[] foes;
     private fight currentfight;
     protected encounter encounterdata;
     //protected String Fightbgm;
@@ -27,15 +27,16 @@ public class ROOM_encounter extends RoomParent {
     }
 
     //
-    protected void room_fight() {
+    //protected void room_fight(player target) {
 
-    }
 
-    public void xenterroom() {
-        for (int i = 0; i > this.foes.length; i++) {//fight everything in room
+    //}
+
+    //public void xenterroom() {
+    //    for (int i = 0; i > this.foes.length; i++) {//fight everything in room
             //this.currentfight = new fight(this.player);//@@@
-        }
-    }
+    //    }
+    //}
     public String[] getmnames(){
         String[] datx = new String[foes.length];
 
@@ -44,5 +45,8 @@ public class ROOM_encounter extends RoomParent {
 
         }
         return datx;
+    }
+    public entity[] getfoes(){
+        return foes;
     }
 }
