@@ -15,7 +15,7 @@ public class gold extends item {
     }
 
     //@Override
-    public void giveitem(player target) {
+    public void givegolditem(player target) {
         target.pickup_gold(this.I_value);
     }
 }

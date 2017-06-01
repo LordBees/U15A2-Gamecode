@@ -36,6 +36,11 @@ public class roomhandler {
         return loadedroom.rtype;
     }
 
+    //special functions
+    public void rewardroomgiver(player target){
+        loadedroom.givereward(target);
+    }
+
     //forks for shop
     public void clearforks(){
         this.forks = new int[]{};

@@ -157,6 +157,7 @@ public class Gameloop {
             */
            //rdatx
            gamestate = rtracker.get_type();//if room changes then change state
+           System.out.print("GS__>:"+gamestate);
 
 
 
@@ -164,7 +165,7 @@ public class Gameloop {
            /**
             * this is how the bgm is changed
             */
-           if (!bgmclip.issameas(rtracker.get_roomBGM())) {
+           if (!bgmclip.issameas(rtracker.get_roomBGM())) {//check if the same track if yes skip
                this.bgmclip.stop();
                this.bgmclip.load(rtracker.get_roomBGM(), true);
                this.bgmclip.play();
@@ -302,7 +303,16 @@ public class Gameloop {
                    break;
                case "LOOT":
                    System.out.println("YOU FOUND A LOOT ROOM!");
-                   System.out.println("you found ");
+                   //System.out.println("you found ");
+                   rtracker.rewardroomgiver(phero);
+                   while(chs.toUpperCase() != "C"){
+                       chs = this.get_user_input();
+                       System.out.println("Type(C) to go to the next room");
+
+
+                   }
+                   System.out.println("you go to the next room...");
+
                    break;
                case "FIGHT":
                    break;
