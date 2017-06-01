@@ -3,7 +3,7 @@ package Assignment.game.roomclasses;
 import Assignment.game.RoomParent;
 import Assignment.game.entity;
 import Assignment.game.fight;
-import Assignment.game.encounter
+import Assignment.game.encounter;
 
 /**
  * Created by Spartan 2 on 2017-05-19.

@@ -146,7 +146,7 @@ public class Gameloop {
                   if (paths > 2){
 
                    }
-               else:{
+               else{
 
                }
                    break;
@@ -156,7 +156,7 @@ public class Gameloop {
                                       "defence increase (D):cost-12 [current:"+phero.getDef()+"]\n" +
                                       "health increase  (H):cost-15 [current:"+phero.getHealth()+"]\n" +
                                       "health potion    (P):cost-7  [current:"+phero.getNum_heals()+"]\n" +
-                                      "super sword      (S):cost-40 [current:"+phero.geti()+"]\n");
+                                      "super sword      (S):cost-40 [current:"+phero.hassword()+"]\n");
                    System.out.println("what would you like to buy?");
                    chs = this.get_user_input();
                    switch (chs.toUpperCase()){
