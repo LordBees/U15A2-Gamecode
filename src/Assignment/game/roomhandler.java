@@ -22,6 +22,14 @@ public class roomhandler {
 
     public void LoadRoom(RoomParent new_room){
         this.loadedroom = new_room;
+        checkloadforks();
+    }
+    public void checkloadforks(){
+        if (this.get_Nroomid() == -1){
+            if (this.get_Croomid() == 3){
+                this.set_forks(new int[]{4,5});
+            }
+        }
     }
     public int get_Croomid(){
         return loadedroom.get_roomid();

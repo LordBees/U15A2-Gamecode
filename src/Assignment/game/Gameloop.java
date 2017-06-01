@@ -155,9 +155,9 @@ public class Gameloop {
            /**
             * this is how the room data is managed if any changes are needed
             */
-           //rdatx
-           gamestate = rtracker.get_type();//if room changes then change state
-           System.out.print("GS__>:"+gamestate);
+           //rdatx//gamestate
+           gstat = rtracker.get_type();//if room changes then change state
+           System.out.println("GS-->:"+gamestate);
 
 
 
@@ -301,20 +301,32 @@ public class Gameloop {
                    }
 
                    break;
+
                case "LOOT":
                    System.out.println("YOU FOUND A LOOT ROOM!");
                    //System.out.println("you found ");
                    rtracker.rewardroomgiver(phero);
-                   while(chs.toUpperCase() != "C"){
-                       chs = this.get_user_input();
+                   while(!chs.toUpperCase().equals("C")){
                        System.out.println("Type(C) to go to the next room");
+                       chs = this.get_user_input();
+
 
 
                    }
                    System.out.println("you go to the next room...");
+                   rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
 
                    break;
                case "FIGHT":
+                   System.out.println("you are in a room with some monsters");
+                   //printlnx(rtracker.);
+                   chs = this.get_user_input();
+                   fight currentfight;
+                   currentfight = new fight(phero,m)
+                   break;
+
+               default:
+                   System.out.println("GSERROR!!!");
                    break;
 
            }

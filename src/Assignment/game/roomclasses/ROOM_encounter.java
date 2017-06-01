@@ -18,7 +18,9 @@ public class ROOM_encounter extends RoomParent {
 
     //
     public ROOM_encounter() {
-        roombgm = "Fight.wav";
+        //roombgm = "Fight.wav";
+        roombgm = "Battle.wav";
+        rtype = "FIGHT";
         //this.foes.
         //this.foes
 
@@ -33,5 +35,14 @@ public class ROOM_encounter extends RoomParent {
         for (int i = 0; i > this.foes.length; i++) {//fight everything in room
             //this.currentfight = new fight(this.player);//@@@
         }
+    }
+    public String[] getmnames(){
+        String[] datx = new String[foes.length];
+
+        for (int i=0;i<foes.length;i++){
+            datx[i] = foes[i].getE_name();
+
+        }
+        return datx;
     }
 }
