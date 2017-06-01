@@ -4,7 +4,7 @@ package Assignment.game.items;
  * Created by Spartan 2 on 2017-05-19.
  */
 public class gold_bag extends gold {
-    gold_bag(){
+    public gold_bag(){
         this.I_name = "bag of gold";
         this.I_value = 1;
         this.I_ShopCost = 0;

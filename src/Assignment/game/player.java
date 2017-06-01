@@ -7,7 +7,7 @@ import Assignment.game.items.hvial;
  * Created by Spartan 2 on 2017-05-19.
  */
 public class player extends entity {
-    private int goldcarried;//gold carried by player
+    private int goldcarried = 10;//gold carried by player
     private item[] inventory = new item[10];//items carried
     //private int Inv_stat [] = {0,0,0};//atk def heal
     //private int atk
@@ -75,12 +75,13 @@ public class player extends entity {
     public String get_invbyslot(int slotno){
         return this.inventory[slotno].I_name;//returns name of item, in slot
     }
-    public int hassword(){
-        if (get_invbyslot(1).equals("SuperSword")){
-            return 1;
+    public String hassword(){//was int
+        //if (get_invbyslot(1).equals("SuperSword")){
+        if (1 == 1){
+            return "1";
         }
         else {
-            return 0;
+            return "0";
         }
     }
 //    public void addto_numheals(){

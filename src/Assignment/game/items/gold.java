@@ -7,7 +7,7 @@ import Assignment.game.player;
  * Created by Spartan 2 on 2017-05-19.
  */
 public class gold extends item {
-    gold(){
+    public gold(){
         this.I_name = "gold piece(super)";
         this.I_value = 1;
         this.I_ShopCost = 0;

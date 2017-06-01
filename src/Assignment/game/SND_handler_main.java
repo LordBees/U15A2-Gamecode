@@ -81,5 +81,13 @@ public class SND_handler_main {
     public void stop(){
         clipsnd.stop();
     }
+    public boolean issameas(String newtrk){
+        if (filen.equals(newtrk)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
 

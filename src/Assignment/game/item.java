@@ -21,4 +21,40 @@ public class item {
         System.out.println("did nothing!!!");
 
     }
+
+    //item name
+    public String getI_name() {
+        return I_name;
+    }
+
+    public void setI_name(String i_name) {
+        I_name = i_name;
+    }
+
+    //cost in shop
+    public int getI_ShopCost() {
+        return I_ShopCost;
+    }
+
+    public void setI_ShopCost(int i_ShopCost) {
+        I_ShopCost = i_ShopCost;
+    }
+
+    //item value
+    public int getI_value() {
+        return I_value;
+    }
+
+    public void setI_value(int i_value) {
+        I_value = i_value;
+    }
+
+    //item description
+    public String getI_Description() {
+        return I_Description;
+    }
+
+    public void setI_Description(String i_Description) {
+        I_Description = i_Description;
+    }
 }

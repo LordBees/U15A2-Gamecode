@@ -126,38 +126,106 @@ public class Gameloop {
         else{
             System.out.println("starting game");
         }
-        System.out.println("press any key to start>:");
-        chs = this.get_user_input();
+        //System.out.println("press any key to start>:");
+        //chs = this.get_user_input();
 
+        //this is outside loop as it needs to be there for moment as bgm snd crashes as no music is loaded rather it worked now than not at all
         System.out.println("you are in a small corridor you can go left or right (L/R)");
+        while (this.isrunning) {
+            chs = this.get_user_input();
+            if (chs.toUpperCase().equals("L")){
+                System.out.println("you chose left");
+                this.isrunning = false;
+                rtracker.LoadRoom(xrooms[0]);
+
+            }
+            else if (chs.toUpperCase().equals("R")){
+                System.out.println("you chose right");
+                this.isrunning = false;
+                rtracker.LoadRoom(xrooms[1]);
+            }
+            else {
+                System.out.println("please type a correct choice(L/R)");
+            }
+        }
+        this.isrunning = true;//hack
        while (this.isrunning){
            //game loop
-           chs = this.get_user_input();
+           //chs = this.get_user_input();
+           /**
+            * this is how the room data is managed if any changes are needed
+            */
+           //rdatx
+           gamestate = rtracker.get_type();//if room changes then change state
+
+
+
+
+           /**
+            * this is how the bgm is changed
+            */
+           if (!bgmclip.issameas(rtracker.get_roomBGM())) {
+               this.bgmclip.stop();
+               this.bgmclip.load(rtracker.get_roomBGM(), true);
+               this.bgmclip.play();
+           }
+
+
+           /**
+            * this is how the game loops
+            */
            switch (gstat){
-               case "PROL"://xps
+               case "PROL"://xps at beginning
+                   //gstat = "SHOP";
+
                    break;
 
                case "FORK"://a fork in the road only really shops can do this
-                   int paths = rtracker.nforks();
+                    int paths = rtracker.get_noforks();
+                    int[] pforks = rtracker.get_forks();
+                    System.out.println("path 1 is  left (L)");
+                    if(paths == 2){
+                        System.out.println("path 2 is right(R)");
 
-                if(paths == 2){
+                    }
+                    if (paths > 2){
+                        System.out.println("path 3 is straight on (S)");
 
-               }
-                  if (paths > 2){
+                    }
+                    else{
 
+
+                    }
+                   System.out.println("choose a direction");
+                   chs = this.get_user_input();
+                   if(chs.toUpperCase().equals("L")){
+                       rtracker.LoadRoom(xrooms[pforks[0]]);
                    }
-               else{
-
-               }
+                   else if (chs.toUpperCase().equals("R")) {
+                       rtracker.LoadRoom(xrooms[pforks[1]]);
+                   }
+                   else if (chs.toUpperCase().equals("S")|| paths>2){
+                       rtracker.LoadRoom(xrooms[pforks[2]]);
+                   }
+                   else{
+                       System.out.println("incorrect path please try again");
+                   }
                    break;
                case"SHOP":
+                   /**
+                   this.bgmclip.stop();
+                   this.bgmclip.load("Shop.wav",true);
+                   this.bgmclip.play();
+                    */
+
                    System.out.println("you are in a shop\n the items for sale are:");
                    System.out.println("attack increase  (A):cost-14 [current:"+phero.getatk()+"]\n" +
                                       "defence increase (D):cost-12 [current:"+phero.getDef()+"]\n" +
                                       "health increase  (H):cost-15 [current:"+phero.getHealth()+"]\n" +
                                       "health potion    (P):cost-7  [current:"+phero.getNum_heals()+"]\n" +
                                       "super sword      (S):cost-40 [current:"+phero.hassword()+"]\n");
-                   System.out.println("what would you like to buy?");
+                   System.out.println("what would you like to buy?" +
+                           "to leave to the next area type (L)");
                    chs = this.get_user_input();
                    switch (chs.toUpperCase()){
 
@@ -166,6 +234,7 @@ public class Gameloop {
                                //buy
                                phero.addto_atk(1);
                                phero.spend_gold(14);
+                               System.out.println("you bought:attack increase!");
                            }
                            else{
                                System.out.println("you cannot afford this item(atk++)");
@@ -178,6 +247,7 @@ public class Gameloop {
                                //buy
                                phero.addto_def(1);
                                phero.spend_gold(12);
+                               System.out.println("you bought:defence increase!");
                            }
                            else{
                                System.out.println("you cannot afford this item(Def++)");
@@ -190,6 +260,7 @@ public class Gameloop {
                                //buy
                                phero.addto_health(10);
                                phero.spend_gold(15);
+                               System.out.println("you bought:health +10 increase!");
                            }
                            else{
                                System.out.println("you cannot afford this item(heath+10)");
@@ -201,6 +272,7 @@ public class Gameloop {
                                //buy
                                phero.addheal(1);
                                phero.spend_gold(7);
+                               System.out.println("you bought:a health potion!");
                            }
                            else{
 
@@ -215,16 +287,26 @@ public class Gameloop {
                                else {
                                    phero.addsword();//quick add
                                    phero.spend_gold(40);
+                                   System.out.println("you bought:the super sword!");
                                }
                            }
                            else{
                                System.out.println("you cannot afford this item(Sword)");
                            }
                            break;
+                       case "L"://leave shop
+                           break;
 
                    }
 
                    break;
+               case "LOOT":
+                   System.out.println("YOU FOUND A LOOT ROOM!");
+                   System.out.println("you found ");
+                   break;
+               case "FIGHT":
+                   break;
+
            }
 
 

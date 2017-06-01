@@ -10,6 +10,7 @@ public class ROOM_shop extends RoomParent {
 
     public ROOM_shop(){
         roombgm = "Shop.wav";
+        rtype = "SHOP";
 
     }
     public void setforks(int[] nextdirx){

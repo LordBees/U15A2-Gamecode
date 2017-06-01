@@ -9,6 +9,7 @@ public class RoomParent {
     protected entity [] room_contents;
     protected String enterstring = "this is the parent";
     protected String roombgm = "Test.wav";
+    protected String rtype = "blankx";
     //protected ;
     protected int roomid =0;
     protected int nextid =0;
