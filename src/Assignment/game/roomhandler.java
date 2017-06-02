@@ -14,7 +14,7 @@ public class roomhandler {
 
 
 
-    private int[] forks;
+    private int[] forks = {};
 
 
     //
@@ -23,8 +23,9 @@ public class roomhandler {
 
     public void LoadRoom(RoomParent new_room){
         System.out.println("loading room:"+new_room.roomid);
+        //System.out.println("branchdata-:"+new_room.get_roomforks()[0]);
         this.loadedroom = new_room;
-        checkloadforks();
+        //checkloadforks();
     }
     public void checkloadforks(){
         if (this.get_Nroomid() == -1){
@@ -64,10 +65,12 @@ public class roomhandler {
         this.forks = forks;
     }
     public int[] get_forks() {
-        return forks;
+        //return forks;
+        return loadedroom.get_roomforks();
     }
     public int get_noforks() {
-        return this.forks.length;
+        //return this.forks.length;
+        return loadedroom.get_roomforks().length;
     }
 
     //determines whet to load into room
