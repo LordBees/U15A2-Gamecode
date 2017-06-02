@@ -10,6 +10,7 @@ public class roomhandler {
     private int currentroom;
     private int lastroom;
     private int nextroom;
+    private String combattype = "";//may turn ito array later
 
 
 
@@ -21,6 +22,7 @@ public class roomhandler {
     //
 
     public void LoadRoom(RoomParent new_room){
+        System.out.println("loading room:"+new_room.roomid);
         this.loadedroom = new_room;
         checkloadforks();
     }
@@ -68,7 +70,14 @@ public class roomhandler {
         return this.forks.length;
     }
 
+    //determines whet to load into room
+    public String getCombattype() {
+        return combattype;
+    }
 
+    public void setCombattype(String combattype) {
+        this.combattype = combattype;
+    }
 
     ////??????
     /**

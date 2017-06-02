@@ -1,5 +1,8 @@
 package Assignment.game;
 
+import Assignment.game.Ents.ENT_enemy_easy;
+import Assignment.game.Ents.ENT_enemy_hard;
+import Assignment.game.Ents.ENT_enemy_med;
 import Assignment.game.encounters.encounter_boss;
 import Assignment.game.roomclasses.*;
 
@@ -37,6 +40,8 @@ public class Gameloop {
     //private  RoomParent []  xrooms ;//class containing all room types instanced as required
     private RoomParent[] xrooms = new RoomParent[20];
     private String winstate = "fail";//good,bad
+
+    String gstat = "PROL";//prologue
 
     Gameloop(){
         //setup
@@ -85,20 +90,21 @@ public class Gameloop {
 
 
         ///room id and data setup
-        xrooms[0].setup(1,3);
-        xrooms[1].setup(2,3);
+
+        xrooms[0].setup(1,2);
+        xrooms[1].setup(2,2);
 
         xrooms[2].setup(3,-1);//if -1 then do something else(choice
         //xrooms[2].setforks(new int[]{4,5});
 
-        xrooms[3].setup(4,3);
-        xrooms[4].setup(5,3);
-        xrooms[5].setup(6,3);
-        xrooms[6].setup(7,3);
-        xrooms[7].setup(8,3);
-        xrooms[8].setup(9,3);
-        xrooms[9].setup(10,3);
-        xrooms[10].setup(11,3);
+        xrooms[3].setup(4,5);
+        xrooms[4].setup(5,6);
+        xrooms[5].setup(6,7);
+        xrooms[6].setup(7,8);
+        xrooms[7].setup(8,9);
+        xrooms[8].setup(9,10);
+        xrooms[9].setup(10,11);
+        xrooms[10].setup(11,11);
 
         xrooms[11].setup(12,-1);
 
@@ -140,7 +146,7 @@ public class Gameloop {
     }
 
     public void gamemain(){
-        String gstat = "PROL";//prologue
+        //String gstat = "PROL";//prologue  //moved up to class
         System.out.println("welcome to the game" +
                 "select a new game (N) or how to play(H)");
         chs = this.get_user_input();
@@ -182,7 +188,7 @@ public class Gameloop {
            //rdatx//gamestate
            //if(gstat.equals("SHOP")){//if loop on shop ignore getting gstate--need2fix
            gstat = rtracker.get_type();//if room changes then change state
-           System.out.println("GS-->:"+gamestate);
+           System.out.println("GS-->:"+gstat+":room id="+rtracker.get_Croomid()+":next="+rtracker.get_Nroomid());
 
 
 
@@ -190,7 +196,7 @@ public class Gameloop {
            /**
             * this is how the bgm is changed
             */
-           if (!bgmclip.issameas(rtracker.get_roomBGM())) {//check if the same track if yes skip
+           if (!bgmclip.issameas(rtracker.get_roomBGM())) {//check if the same track if yes skip the loading procedure
                this.bgmclip.stop();
                this.bgmclip.load(rtracker.get_roomBGM(), true);
                this.bgmclip.play();
@@ -244,7 +250,9 @@ public class Gameloop {
                    this.bgmclip.play();
                     */
 
-                   System.out.println("you are in a shop\n the items for sale are:");
+                   System.out.println("-----------------" +
+                                      "you are in a shop, you have ("+phero.getmoney()+") gold to spend}+\n" +
+                                      "the items for sale are:");
                    System.out.println("attack increase  (A):cost-14 [current:"+phero.getatk()+"]\n" +
                                       "defence increase (D):cost-12 [current:"+phero.getDef()+"]\n" +
                                       "health increase  (H):cost-15 [current:"+phero.getHealth()+"]\n" +
@@ -323,6 +331,8 @@ public class Gameloop {
                        case "L"://leave shop
                            //
                            //gstat = "FORK";
+                           this.gstat = "FORK";
+                           System.out.println("You leave the shop...");
                            break;
 
                    }
@@ -333,34 +343,83 @@ public class Gameloop {
                    System.out.println("YOU FOUND A LOOT ROOM!");
                    //System.out.println("you found ");
                    rtracker.rewardroomgiver(phero);
-                   while(!chs.toUpperCase().equals("C")){
+                   while(!chs.toUpperCase().equals("C"))
+                   {
                        System.out.println("Type(C) to go to the next room");
                        chs = this.get_user_input();
-
-
-
                    }
+
                    System.out.println("you go to the next room...");
                    rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
-
                    break;
 
                case "FIGHT":
-                   System.out.println("you are in a room with some monsters");
+                   //System.out.println("you are in a room with some monsters");
+                   //System.out.println("you are in a room with "+thisfoes.length+" monsters");
                    //printlnx(rtracker.);
                    //chs = this.get_user_input();
-                   entity[] thisfoes = new entity[5];//this should be 4
+                   entity[] thisfoes;// = new entity[5];//this should be 4
                    fight currentfight;
 
-                   System.out.println("DEBUG fightingmx:"+thisfoes.length+"rtrackerrrom:"+rtracker.get_Croomid());
-                   thisfoes = rtracker.getfoescombat();
+                   //System.out.println("DEBUG fightingmx:"+thisfoes.length+"rtrackerrrom:"+rtracker.get_Croomid());
 
-                   System.out.println("DEBUG fightingm:"+thisfoes.length);
-                   for(int i =0;i<thisfoes.length;i++){
-                       currentfight = new fight(phero,thisfoes[i]);
-                       if (!currentfight.fighterloop());{
-                           gstat = "DIED";}
+                   thisfoes = rtracker.getfoescombat();
+                   /**
+                    * //debug by putting raw into redo code to make pull out entity names out of class
+                    * then instance them in gameloop append to thisfoes instead of putting classes into the array
+                    */
+
+
+                   switch (rtracker.getCombattype()){//decide what difficulty the room is
+                       case "EASY":
+                           thisfoes = new entity[] {new ENT_enemy_easy()};
+                           break;
+                       case "MEDIUM":
+                           thisfoes = new entity[] {new ENT_enemy_easy(),new ENT_enemy_med()};
+                           break;
+                       case "HARD":
+                           thisfoes = new entity[] {new ENT_enemy_med(),new ENT_enemy_hard()};
+                           break;
+
+
+                       default://if undefined
+                           thisfoes = new entity[]{new ENT_enemy_easy()};
+                           break;
+                   }
+                   //end fight setup
+
+                   //user feedback
+                   if (thisfoes.length == 1)
+                   {
+                       System.out.println("you are in a room with a "+thisfoes[0].getE_name()+" monster");
+                   }
+                   else
+                   {
+                       System.out.println("you are in a room with " + thisfoes.length + " monsters");
+                   }
+
+                   //begin fight
+                   //System.out.println("DEBUG fightingm:"+thisfoes.length);
+                   for(int i =0;i<thisfoes.length;i++)
+                   {
+                       System.out.println("you are fighting a " + thisfoes[i].getE_name());
+                       currentfight = new fight(phero, thisfoes[i]);
+
+                       if (!currentfight.fighterloop())
+                       {
+                           gstat = "DIED";
                        }
+                       else if (!currentfight.get_wonfight()) {
+                           System.out.println("you got nothing for the fight as you ran away");
+
+                       }
+                       else {
+                           System.out.println("your reward for the room is:" +
+                                   "coins:");
+
+                       }
+                   }
+                   System.out.println("You leave the battle room...");
                    rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
 
 
@@ -375,6 +434,7 @@ public class Gameloop {
                case "DIED":
                    System.out.println("You died!! game over");
                    break;
+
                case "RSET":
                    System.out.println("do you want to retry(y/n)");
                    chs = this.get_user_input();

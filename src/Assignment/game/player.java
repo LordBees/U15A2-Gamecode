@@ -77,12 +77,16 @@ public class player extends entity {
     }
     public String hassword(){//was int
         //if (get_invbyslot(1).equals("SuperSword")){
+        //@@@@@
         if (1 == 1){
             return "1";
         }
         else {
             return "0";
         }
+    }
+    public int getmoney(){
+        return goldcarried;
     }
 //    public void addto_numheals(){
 //

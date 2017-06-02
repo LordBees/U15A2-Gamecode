@@ -65,7 +65,7 @@ public class entity {
         }
     }
     public boolean do_isdead(){//check if monster is dead
-        if (this.health<=0){
+        if (this.health>=0){
             return false;
         }
         else {

@@ -45,9 +45,11 @@ public class RoomParent {
     public void winroom(){//called if victory condition met in room
 
     }
-    public void setup(int xid,int xnext){
+    //public void setup(int xid,int xnext){
+    public void setup(int xid,int xnext_array){
         this.set_roomid(xid);
-        this.set_nextid(xnext);
+        //this.set_nextid(xnext);
+        this.set_nextid(xnext_array);
     }
 
     public void set_roomid(int new_id){
