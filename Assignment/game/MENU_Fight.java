@@ -16,6 +16,7 @@ public class MENU_Fight {
     private JButton healButton;
     private JButton continueButton;
     private JTextArea ASCII_monster;
+    private JTextArea battletext_area;
 
 
     public MENU_Fight() {
