@@ -20,6 +20,10 @@ public class RoomParent {
     protected int nextid =0;
 
 
+    //quick hack
+    protected int[] dirx = {-1,-1,-1};//= new int[3];
+
+
     //loot stuff
     protected Random RNG = new Random();//rng
     int maxgold = 5;
@@ -44,6 +48,10 @@ public class RoomParent {
     }
     public void winroom(){//called if victory condition met in room
 
+    }
+
+    public int[] get_roomforks(){
+        return this.dirx;
     }
     //public void setup(int xid,int xnext){
     public void setup(int xid,int xnext_array){

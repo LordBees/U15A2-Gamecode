@@ -3,7 +3,6 @@ package Assignment.game;
 import Assignment.game.Ents.ENT_enemy_easy;
 import Assignment.game.Ents.ENT_enemy_hard;
 import Assignment.game.Ents.ENT_enemy_med;
-import Assignment.game.encounters.encounter_boss;
 import Assignment.game.roomclasses.*;
 
 import java.io.BufferedReader;
@@ -39,6 +38,7 @@ public class Gameloop {
     //private window [] window array conatining windows
     //private  RoomParent []  xrooms ;//class containing all room types instanced as required
     private RoomParent[] xrooms = new RoomParent[20];
+    private RoomParent[] xrooms_int = new RoomParent[2];
     private String winstate = "fail";//good,bad
 
     String gstat = "PROL";//prologue
@@ -126,7 +126,10 @@ public class Gameloop {
         //this.bgmclip.load("src/Assignment/game/Song.wav");
 
 
+        //internal setup of rooms
+        xrooms_int[0] = new ROOM_internal_fork_01();
 
+        xrooms_int[0].setup(3,-1);
         ///window setup
 
 
@@ -213,10 +216,46 @@ public class Gameloop {
                    break;
 
                case "FORK"://a fork in the road only really shops can do this
-                    int paths = rtracker.get_noforks();
+                    //int paths = rtracker.get_noforks();
                     int[] pforks = rtracker.get_forks();
+                    System.out.println("d:"+pforks.length);
+                    System.out.println(pforks[0]+":"+pforks[1]+":"+pforks[2]+":");
+
+                    if (pforks[0] != -1){
+                        System.out.println("path 1 is  left (L)");
+
+                    }
+                   if (pforks[1] != -1){
+                       System.out.println("path 2 is right(R)");
+
+                   }
+                   if (pforks[2] != -1){
+                       System.out.println("path 3 is straight on (S)");
+
+                   }
+
+                   System.out.println("choose a direction");
+                   chs = this.get_user_input();
+                   if(chs.toUpperCase().equals("L")&& pforks[0] !=-1){
+                       rtracker.LoadRoom(xrooms[pforks[0]]);
+                   }
+                   else if (chs.toUpperCase().equals("R")&& pforks[1] !=-1) {
+                       rtracker.LoadRoom(xrooms[pforks[1]]);
+                   }
+                   else if (chs.toUpperCase().equals("S")&& pforks[2] !=-1){
+                       rtracker.LoadRoom(xrooms[pforks[2]]);
+                   }
+                   else{
+                       System.out.println("incorrect path please try again");
+                   }
+                   break;
+
+
+                    /**
+                     * old code kept for refactoring manually...
                     System.out.println("path 1 is  left (L)");
-                    if(paths == 2){
+                    //if(paths == 2){
+                   if (pforks[0]!=-1){
                         System.out.println("path 2 is right(R)");
 
                     }
@@ -228,6 +267,7 @@ public class Gameloop {
 
 
                     }
+
                    System.out.println("choose a direction");
                    chs = this.get_user_input();
                    if(chs.toUpperCase().equals("L")){
@@ -243,6 +283,8 @@ public class Gameloop {
                        System.out.println("incorrect path please try again");
                    }
                    break;
+                     */
+
                case"SHOP":
                    /**
                    this.bgmclip.stop();
@@ -331,8 +373,9 @@ public class Gameloop {
                        case "L"://leave shop
                            //
                            //gstat = "FORK";
-                           this.gstat = "FORK";
+                           //this.gstat = "FORK";
                            System.out.println("You leave the shop...");
+                           rtracker.LoadRoom(xrooms_int[0]);//load next room(fork internal)
                            break;
 
                    }
