@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
  * Created by Spartan 2 on 2017-05-19.
  */
 public class MENU_LootOrBlank {
+    public JPanel gameScreenPanel;
+
     private JButton continueButton;
     private JTextArea textArea1;
 
