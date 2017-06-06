@@ -187,12 +187,15 @@ public class fight {
                 break;
 
             case "ATK":
+                sfxclip.load("SFX_atk.wav",false);
+                sfxclip.play();
                 switch (stance[1]){
 
                     case "ATK":
                         System.out.println("you attacked the monster, it attacks you!");
                         foe.do_attack(playerx);
                         playerx.do_attack(foe);
+                        //sfxclip.play();
                         break;
 
                     case "DEF":
