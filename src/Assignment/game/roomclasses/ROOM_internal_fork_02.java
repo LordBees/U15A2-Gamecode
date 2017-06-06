@@ -14,7 +14,7 @@ public class ROOM_internal_fork_02 extends ROOM_INTERNAL {//solves problem of ho
         //setshopid(1);
         setshopid(12);
         //dirx = new int[]{4,5,-1};
-        System.out.print("BBB@@@");
+        System.out.println("BBB@@@");
         printlnx(dirx);
 
 

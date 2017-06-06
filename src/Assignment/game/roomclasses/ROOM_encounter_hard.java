@@ -12,6 +12,7 @@ public class ROOM_encounter_hard extends ROOM_encounter {
 
     //
     public ROOM_encounter_hard(){
+        setroomdifficulty("HARD");
         this.foes = new entity[]{new ENT_enemy_easy(),new ENT_enemy_med()};
 
     }

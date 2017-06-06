@@ -12,24 +12,24 @@ public class RoomParent {
     //attributes
     protected entity[] foes;
     protected entity [] room_contents;
-    protected String enterstring = "this is the parent";
-    protected String roombgm = "Test.wav";
-    protected String rtype = "blankx";
+    protected String enterstring = "this is the parent";//string for when entering room
+    protected String roombgm = "Test.wav";//bgm music
+    protected String rtype = "blankx";//room type(gstate flag)
     //protected ;
-    protected int roomid =0;
+    protected int roomid =0;//ids
     protected int nextid =0;
     protected int shopid = -1;
-
 
     //quick hack
     protected int[] dirx = {-1,-1,-1};//= new int[3];
 
-
     //loot stuff
     protected Random RNG = new Random();//rng
     int maxgold = 5;
-
     protected gold_bag[] lootin  = new gold_bag[2];
+
+    //
+    protected String roomdifficulty = "Blankx";
 
     //constructor
     /**
@@ -43,6 +43,12 @@ public class RoomParent {
      */
 
     //methods
+    public void setroomdifficulty(String dfx){
+        this.roomdifficulty = dfx;
+    }
+    public String getroomdificulty(){
+        return this.roomdifficulty;
+    }
     public void enterroom(){//called when player enters room
         System.out.println(this.enterstring);
 

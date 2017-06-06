@@ -139,8 +139,8 @@ public class Gameloop {
         xrooms_int[2] = new ROOM_internal_fork_03();
 
         xrooms_int[0].setup(3,-1);
-        xrooms_int[0].setup(12,-1);
-        xrooms_int[0].setup(19,-1);
+        xrooms_int[1].setup(12,-1);
+        xrooms_int[2].setup(19,-1);
         ///window setup
 
 
@@ -202,7 +202,7 @@ public class Gameloop {
            //rdatx//gamestate
            //if(gstat.equals("SHOP")){//if loop on shop ignore getting gstate--need2fix
            if(!ignore_room_gstat){
-               gstat = rtracker.get_type();//if room changes then change state
+               gstat = rtracker.get_type();//if room changes then change state unless flag is set
            }
            else {
                ignore_room_gstat = false;//reset
@@ -308,15 +308,17 @@ public class Gameloop {
                    this.bgmclip.play();
                     */
 
-                   System.out.println("-----------------" +
+                   System.out.println("________________\n" +
                                       "you are in a shop, you have ("+phero.getmoney()+") gold to spend}+\n" +
-                                      "the items for sale are:");
-                   System.out.println("attack increase  (A):cost-14 [current:"+phero.getatk()+"]\n" +
+                                      "the items for sale are:\n");
+                   System.out.println("-----------------\n" +
+                                      "attack increase  (A):cost-14 [current:"+phero.getatk()+"]\n" +
                                       "defence increase (D):cost-12 [current:"+phero.getDef()+"]\n" +
                                       "health increase  (H):cost-15 [current:"+phero.getHealth()+"]\n" +
                                       "health potion    (P):cost-7  [current:"+phero.getNum_heals()+"]\n" +
-                                      "super sword      (S):cost-40 [current:"+phero.hassword()+"]\n");
-                   System.out.println("what would you like to buy?" +
+                                      "super sword      (S):cost-40 [current:"+phero.hassword()+"]\n" +
+                                      "-----------------");
+                   System.out.println("what would you like to buy?\n" +
                            "to leave to the next area type (L)");
                    chs = this.get_user_input();
                    switch (chs.toUpperCase()){
@@ -355,7 +357,7 @@ public class Gameloop {
                                System.out.println("you bought:health +10 increase!");
                            }
                            else{
-                               System.out.println("you cannot afford this item(heath+10)");
+                               System.out.println("you cannot afford this item(health+10)");
                            }
                            break;
 
@@ -367,9 +369,10 @@ public class Gameloop {
                                System.out.println("you bought:a health potion!");
                            }
                            else{
-
+                               System.out.println("you cannot afford this item(health potion+1)");
                            }
                            break;
+
                        case "S":
                            if(phero.canafford(40)){
                                //buy
@@ -386,6 +389,7 @@ public class Gameloop {
                                System.out.println("you cannot afford this item(Sword)");
                            }
                            break;
+
                        case "L"://leave shop
                            //
                            //gstat = "FORK";
@@ -404,23 +408,27 @@ public class Gameloop {
 
                            if (rtracker.get_Croomid()== xrooms_int[0].getshopid())
                            {
+                               System.out.println("@@@@''''@@@@''''");
                                rtracker.LoadRoom(xrooms_int[0]);
                            }
                            else if (rtracker.get_Croomid()== xrooms_int[1].getshopid())
                            {
+                               System.out.println("####~~~~####~~~~");
                                rtracker.LoadRoom(xrooms_int[1]);
                            }
                            else if (rtracker.get_Croomid()== xrooms_int[2].getshopid())
                            {
+                               System.out.println("BossSsobBossSsob");
                                rtracker.LoadRoom(xrooms_int[2]);
                            }
-
+                           /**
+                            * can now put back into for loop
+                            */
                            //rtracker.LoadRoom(xrooms_int[0]);//load next room(fork internal)
                            break;
-
                    }
-
                    break;
+
 
                case "LOOT":
                    System.out.println("YOU FOUND A LOOT ROOM!");
@@ -435,6 +443,7 @@ public class Gameloop {
                    System.out.println("you go to the next room...");
                    rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
                    break;
+
 
                case "FIGHT":
                    //System.out.println("you are in a room with some monsters");
@@ -480,12 +489,12 @@ public class Gameloop {
                    {
                        System.out.println("you are in a room with " + thisfoes.length + " monsters");
                    }
-
+                   System.out.println    ("_______________\n");
                    //begin fight
                    //System.out.println("DEBUG fightingm:"+thisfoes.length);
                    for(int i =0;i<thisfoes.length;i++)
                    {
-                       System.out.println("you are fighting a " + thisfoes[i].getE_name());
+                       System.out.println("---------\nyou are fighting a " + thisfoes[i].getE_name());
                        currentfight = new fight(phero, thisfoes[i]);
 
                        if (!currentfight.fighterloop())
@@ -515,15 +524,16 @@ public class Gameloop {
                    }
                    System.out.println("You leave the battle room...");
                    rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
-
-
                    //currentfight = new fight(phero,m)
                    break;
+
 
                case "BOSS":
                    System.out.println("this is the BOSS!!!");
 
                    break;
+
+
                case "BLANK":
                    chs="";
                    while(!chs.toUpperCase().equals("C"))
@@ -536,17 +546,21 @@ public class Gameloop {
                    rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
                    break;
 
+
                case "DIED":
                    System.out.println("You died!! game over");
                    gstat = "RSET";
                    ignore_room_gstat = true;
                    break;
 
+
                case "BWIN":
                    break;
 
+
                case "BLOSE":
                    break;
+
 
                case "RSET":
                    System.out.println("do you want to retry(y/n)");
@@ -560,16 +574,18 @@ public class Gameloop {
                    else{
                         System.out.println("incorrect input, please try again");
                    }
+                   break;
+
 
                default:
                    System.out.println("GSERROR!!!");
                    //TimeUnit
                    int x=1;
                    while (1==x){
-
                    }
-
                    break;
+
+
            }
        }
     }

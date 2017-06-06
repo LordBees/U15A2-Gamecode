@@ -10,7 +10,7 @@ public class roomhandler {
     private int currentroom;
     private int lastroom;
     private int nextroom;
-    private String combattype = "";//may turn ito array later
+    //private String combattype = "";//may turn ito array later
 
 
 
@@ -75,11 +75,12 @@ public class roomhandler {
 
     //determines whet to load into room
     public String getCombattype() {
-        return combattype;
+        //return combattype;
+        return loadedroom.getroomdificulty();
     }
 
     public void setCombattype(String combattype) {
-        this.combattype = combattype;
+        //this.combattype = combattype;
     }
 
     ////??????

@@ -13,6 +13,7 @@ public class ROOM_encounter_med extends ROOM_encounter {
 
     //
     public ROOM_encounter_med(){
+        setroomdifficulty("MEDIUM");
         //this.foes = new entity[]{new ENT_enemy_easy(),new ENT_enemy_med()};
         encounterdata = new encounter_med();
         //this.foes =

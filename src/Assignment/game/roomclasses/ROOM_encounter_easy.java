@@ -12,6 +12,7 @@ public class ROOM_encounter_easy extends ROOM_encounter {
 
     //
     public ROOM_encounter_easy(){
+        setroomdifficulty("EASY");
 
         this.foes = new entity[]{new ENT_enemy_easy()};
         //this.lootin[0].setI_value(RNG.nextInt(10));
