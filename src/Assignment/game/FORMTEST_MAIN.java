@@ -35,6 +35,7 @@ public class FORMTEST_MAIN {
         windowFrame_FI.setContentPane(form_fi.gameScreenPanel);
         windowFrame_FI.pack();
         windowFrame_FI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        windowFrame_FI.setLocationRelativeTo(null);
 
         JFrame windowFrame_GO = new JFrame("gameover");
         windowFrame_GO.setVisible(true);

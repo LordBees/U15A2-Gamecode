@@ -11,7 +11,12 @@ public class ROOM_internal_fork_01 extends ROOM_INTERNAL {//solves problem of ho
     public ROOM_internal_fork_01(){
         roombgm = "Shop.wav";
         rtype = "FORK";
-        dirx = new int[]{4,5,-1};
+
+        set_roomforks(new int[]{4,5,-1});
+        //setshopid(0);
+        setshopid(3);
+        //dirx = new int[]{4,5,-1};
+        System.out.print("AAA@@@");
         printlnx(dirx);
 
 

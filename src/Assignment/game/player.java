@@ -17,9 +17,14 @@ public class player extends entity {
         //this.inventory(new hvial());
         //populate
         this.inventory[0] = new hvial();
+        this.atk = 5;
+        this.atk_m=1;
+        this.def = 1;
+        this.E_name="PLAYER";
     }
 
     public void pickup_gold(int goldcollected){//add gold to the players inventory
+        System.out.println("\nDBG:you picked up "+goldcollected+" gold!");
         this.goldcarried = this.goldcarried + goldcollected;
     }
     public void spend_gold (int goldspent){//remove gold from the players inventory
@@ -76,7 +81,7 @@ public class player extends entity {
         return this.inventory[slotno].I_name;//returns name of item, in slot
     }
     public String hassword(){//was int
-        //if (get_invbyslot(1).equals("SuperSword")){
+        //if (get_invbyslot(1).equals("SuperSword")){//commented back in
         //@@@@@
         if (1 == 1){
             return "1";

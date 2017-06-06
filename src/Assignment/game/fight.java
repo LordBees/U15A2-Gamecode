@@ -7,6 +7,10 @@ import java.util.Scanner;
  * Created by 10740071 on 23/05/2017.
  */
 public class fight {
+    //sfx clip
+    //private Clip sfxclip;
+    private SND_handler_main sfxclip = new SND_handler_main();
+
     //user input
     private Scanner cons_input = new Scanner(System.in);
 
@@ -114,6 +118,7 @@ public class fight {
             resolveturn();
             }
         }
+
         return playersurvived;
     }
 
@@ -121,10 +126,12 @@ public class fight {
     public void playerattack(){
         //this.playerx.do_attack(this.foe);
         stance[0] = "ATK";
+        //foe.setStance("ATK");
 
     }
     public void playerdefend(){
         stance[0] = "DEF";
+        playerx.setStance("Defending");
 
     }
     public void playerheal(){
@@ -138,12 +145,14 @@ public class fight {
     }
     public void foedefend(){
         stance[1] = "DEF";
+        //foe.setStance("Defending");
 
     }
     public void foeheal(){
         stance[1] = "HEAL";
 
     }
+
     public void resolveturn(){
         //resolves fight based on turn state
 
@@ -153,7 +162,16 @@ public class fight {
 
         //make uppercase so it doesn't have to be done on every case
         stance[0] = stance[0].toUpperCase();
-        stance[0] = stance[0].toUpperCase();
+        stance[1] = stance[1].toUpperCase();
+
+        //set defending flags if needed
+        if (stance[0].equals("DEF")){
+            playerx.setStance("Defending");
+        }
+        if (stance[1].equals("DEF")){
+            foe.setStance("Defending");
+        }
+
 
         switch (stance[0]){
             case "RUN":
@@ -166,11 +184,88 @@ public class fight {
                 }
                 wonfight = false;
                 this.fighting = false;
+                break;
 
-        }
+            case "ATK":
+                switch (stance[1]){
+
+                    case "ATK":
+                        System.out.println("you attacked the monster, it attacks you!");
+                        foe.do_attack(playerx);
+                        playerx.do_attack(foe);
+                        break;
+
+                    case "DEF":
+                        System.out.println("you attacked the monster!- it defended your attack!");
+                        playerx.do_attack(foe);
+                        break;
+
+                    case "HEAL":
+                        System.out.println("you attacked the monster,it tried to heal");
+                        playerx.do_attack(foe);
+                        foe.try_E_heal();
+                        break;
+                }
+
+
+                break;
+            case "DEF"://player defending
+                switch (stance[1]){//monster options
+                    case "ATK":
+                        foe.do_attack(playerx);
+                        System.out.println("you defended against the monsters attack!");
+                    break;
+
+                    case "DEF":
+                        System.out.println("you defended against the monster, it does the same!");
+                    break;
+
+                    case "HEAL":
+                        System.out.println("you healed while the monster helaed!");
+                        if(foe.getNum_heals() >+1){//if can heal
+                            foe.try_E_heal();
+                        }
+                        else {
+                            System.out.println("the monster failed to heal...");
+                        }
+                    break;
+
+                }
+                break;
+            case "HEAL":
+                switch (stance[1]) {//monster options
+                    case "ATK":
+                        System.out.println("healed while the monster attacked!");
+                        playerx.try_heal();
+                        foe.do_attack(playerx);
+                        break;
+
+                    case "DEF":
+                        System.out.println("you try to heal, the monster tried to defend!");
+                        playerx.try_heal();
+                        break;//no damage dealt
+
+                    case "HEAL":
+                        System.out.println("You try to heal, the monster does the same");
+                        playerx.try_heal();
+                        if (foe.getNum_heals() > +1) {//if can heal
+                            foe.try_E_heal();
+                        } else {
+                            System.out.println("the monster failed to heal...");
+                        }
+                        break;
+                }
+                break;
+
+
+    }
         //
+
+        //clear stances
         stance[0] = "NONE";
         stance[1] = "NONE";
+        foe.ResetStance();
+        playerx.ResetStance();
     }
     public Boolean get_wonfight(){
         return wonfight;

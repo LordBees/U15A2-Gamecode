@@ -7,6 +7,8 @@ import Assignment.game.RoomParent;
  */
 public class ROOM_empty extends RoomParent {
     public ROOM_empty(){
+        roombgm = "GotLoot.wav";
+        rtype = "BLANK";
 
     }
 }

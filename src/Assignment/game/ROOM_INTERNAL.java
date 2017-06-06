@@ -5,7 +5,21 @@ package Assignment.game;
  */
 public class ROOM_INTERNAL extends RoomParent {
     protected int[]  dirx =  {};//directionids
+    protected int shopid = -1;
+    //
 
+    //
+    public ROOM_INTERNAL(){
+        this.rtype = "FORK";
+
+    }
+    //
+    public int getshopid(){
+        return this.shopid;
+    }
+    public void setshopid(int ix){
+        this.shopid = ix;
+    }
     public void setforks(int[] nextdirx){
         this.dirx = nextdirx;
     }

@@ -13,7 +13,10 @@ public class ROOM_encounter_boss extends ROOM_encounter {
     //
     public ROOM_encounter_boss(){
         this.foes = new entity[]{new ENT_enemy_easy(),new ENT_enemy_med()};
+        roombgm = "Battle2.wav";
+        rtype = "BOSS";
     }
+
 
     //
 }

@@ -18,6 +18,7 @@ public class RoomParent {
     //protected ;
     protected int roomid =0;
     protected int nextid =0;
+    protected int shopid = -1;
 
 
     //quick hack
@@ -50,10 +51,20 @@ public class RoomParent {
 
     }
 
+    public int getshopid(){
+        return this.shopid;
+    }
+    public void setshopid(int ix){
+        this.shopid = ix;
+    }
+
     public int[] get_roomforks(){
         return this.dirx;
     }
     //public void setup(int xid,int xnext){
+    public void set_roomforks(int[] dirx){
+        this.dirx = dirx;
+    }
     public void setup(int xid,int xnext_array){
         this.set_roomid(xid);
         //this.set_nextid(xnext);
@@ -95,7 +106,8 @@ public class RoomParent {
         else{
             lootin[0].setI_value(0);
         }
-        System.out.println("bag additonal bag contains:"+lootin[0].getI_value());
+        System.out.println("bag additional bag contains:"+lootin[0].getI_value()+
+                           "rn:"+this.rtype+this.roomid);
         /**
          * system for adding coins to roomloot(broken)
          System.out.println(nogold);
@@ -128,6 +140,7 @@ public class RoomParent {
             System.out.print("BONUS LOOT! +gold:"+lootin[0].getI_value());
             lootin[0].givegolditem(target);
         }
+        //System.out.print("givinggold..");
         lootin[1].givegolditem(target);
 
 

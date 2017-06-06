@@ -11,10 +11,11 @@ public class entity {
 
     //actual attributes
     protected int health = 100;//health
+    protected int healthmax = 100;
     protected int atk = 1;//attack roller
     protected int atk_m =1;//attack modifier
     protected int def = 1;//defence modifier
-    protected int num_heals;//heals
+    protected int num_heals = 0;//heals
     protected String stance = "None";//set stance //None,Attacking,Defending,Healing;
     protected String E_name = "Nullmonster";// = "MissingName";
 
@@ -57,10 +58,11 @@ public class entity {
             if (raw_dmg<=defdam){//if defence greater than monsters attack,always do 1 point of damage
                 defdam = raw_dmg - 1.0f;//may cause error
             }
-
+            System.out.println(this.getE_name()+":"+Math.round(raw_dmg-defdam));//dbg
             target.damage(Math.round(raw_dmg-defdam));
         }
         else{
+            System.out.println(this.getE_name()+":"+this.get_attack());
             target.damage(this.get_attack());//damage target for attack value of this entities attack value
         }
     }
@@ -93,5 +95,27 @@ public class entity {
     }
     public int getNum_heals(){
         return this.num_heals;
+    }
+    //set stance
+    public String getStance() {
+        return stance;
+    }
+    public void setStance(String stance) {
+        this.stance = stance;
+    }
+    public void ResetStance(){
+        this.stance = "None";
+    }
+    public void try_E_heal(){
+        if (this.getNum_heals() >0){
+            this.heal(10);
+            this.num_heals--;
+            System.out.println("the"+this.getE_name()+"healed 10HP!");
+        }
+    }
+    public void chkhealth(){
+        if (this.health>this.healthmax){
+            this.health= this.healthmax;
+        }
     }
 }
