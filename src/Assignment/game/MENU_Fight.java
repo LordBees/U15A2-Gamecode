@@ -18,12 +18,18 @@ public class MENU_Fight {
     private JTextArea ASCII_monster;
     private JTextArea battletext_area;
 
+    private fight battlex;
 
-    public MENU_Fight() {
+
+    public MENU_Fight(fight battlex) {
+        this.battlex = battlex;
+
+
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ///action case code
+
             }
         };
         attackButton.addActionListener(listener);

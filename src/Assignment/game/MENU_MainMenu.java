@@ -29,6 +29,8 @@ public class MENU_MainMenu {
             }
         });
          */
+
+        /**
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,5 +39,18 @@ public class MENU_MainMenu {
         };
         howToPlayButton.addActionListener(listener);
         startButton.addActionListener(listener);
+         */
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //This is where our code runs when the button
+                // is clicked
+                //String story = theFight.TakeTurn("a");
+                //storyText.setText(story);
+                Gameloop
+
+            }
+        });
+
     }
 }

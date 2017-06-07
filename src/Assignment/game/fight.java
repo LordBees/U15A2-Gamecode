@@ -23,6 +23,7 @@ public class fight {
     private player playerx;
     //
     private Boolean wonfight = false;
+    //private boolean iswindowed;//displays windows instead of text
 
     //some fight information moved here to allow for making it work, will move into classes of monsters when applicable
     //rather it worked badly than not at all
@@ -31,6 +32,7 @@ public class fight {
     fight(player playerx,entity foe) {
         this.playerx = playerx;
         this.foe = foe;
+        //this.iswindowed = iswindowed;
     }
 
     public boolean fighterloop(){
@@ -122,6 +124,94 @@ public class fight {
         return playersurvived;
     }
 
+    public boolean fighterloop_win(){
+        boolean playersurvived = false;
+        wonfight = false;
+        while (fighting){
+            System.out.println(playerx.do_isdead());
+            System.out.println("health="+playerx.health);
+            if (playerx.do_isdead() == true) {//if player dies
+                System.out.println("you died in battle!" +
+                        "\nslain by a"+foe.getE_name());
+                this.fighting = false;
+                playersurvived = false;
+                wonfight = false;
+            }
+            else if (foe.do_isdead() == true){//if foe dies
+                this.fighting = false;
+                System.out.println("you defeated a "+foe.getE_name());
+                playersurvived = true;
+                wonfight = true;
+            }
+            else{
+                //fight
+                System.out.println( "\n------------------" +
+                        "\nthe default action is defend" +
+                        "\nchoose an action:" +
+                        "\n(A) attack the monster" +
+                        "\n(D) defend against the monsters attack" +
+                        "\n(H) use a healing potion("+playerx.getNum_heals()+") remaining" +
+                        "\n(R) run from the fight -no gold will be awarded" +
+                        "\n------------------");
+                this.chs = this.getinp();
+                switch (chs.toUpperCase()){
+                    case"ATTACK":
+                        this.playerattack();
+                        break;
+                    case"A":
+                        this.playerattack();
+                        break;
+
+                    case"DEFEND":
+                        this.playerdefend();
+                        break;
+                    case"D":
+                        this.playerdefend();
+                        break;
+
+                    case "HEAL":
+                        this.playerheal();
+                        break;
+                    case "H":
+                        this.playerheal();
+                        break;
+
+                    case "RUN":
+                        //this.playerheal();
+                        stance[0] = "RUN";
+                        break;
+                    case "R":
+                        //this.playerheal();
+                        stance[0] = "RUN";
+                        break;
+
+                    default:
+                        System.out.println( "didnt understand what you said["+chs+"]" +
+                                "\n defending...");
+                        this.playerdefend();
+                        break;
+
+                }
+                //enemy turn
+                System.out.println("the monster ("+foe.getE_name()+") is doing something!");
+                switch (RNG.nextInt(2)){//randomize action
+                    case 0://atk
+                        this.foeattack();
+                        break;
+                    case 1://def
+                        this.foedefend();
+                        break;
+                    case 2://heal if possible
+                        this.foeheal();
+                        break;
+                }
+
+                resolveturn();
+            }
+        }
+
+        return playersurvived;
+    }
 
     public void playerattack(){
         //this.playerx.do_attack(this.foe);
@@ -265,11 +355,165 @@ public class fight {
         //
 
         //clear stances
+        //stance[0] = "NONE";
+        //stance[1] = "NONE";
+        //foe.ResetStance();
+        //playerx.ResetStance();
+        this.resetstance_all();
+    }
+
+    public void resolveturn_win(String popt){//player option ///hack
+        switch (chs.toUpperCase()){
+            case"ATTACK":
+                this.playerattack();
+                break;
+            case"A":
+                this.playerattack();
+                break;
+
+            case"DEFEND":
+                this.playerdefend();
+                break;
+            case"D":
+                this.playerdefend();
+                break;
+
+            case "HEAL":
+                this.playerheal();
+                break;
+            case "H":
+                this.playerheal();
+                break;
+
+            case "RUN":
+                //this.playerheal();
+                stance[0] = "RUN";
+                break;
+            case "R":
+                //this.playerheal();
+                stance[0] = "RUN";
+                break;
+
+        if (stance[0].equals("DEF")){
+            playerx.setStance("Defending");
+        }
+        if (stance[1].equals("DEF")){
+            foe.setStance("Defending");
+        }
+
+        switch (popt){
+            case "RUN":
+                if (stance[1].equals("ATK")){
+                    foe.do_attack(playerx);
+                    System.out.println("you ran away and took some damage in the process...");
+                }
+                else{
+                    System.out.println("you ran away...");
+                }
+                wonfight = false;
+                this.fighting = false;
+                break;
+
+            case "ATK":
+                sfxclip.load("SFX_atk.wav",false);
+                sfxclip.play();
+                switch (stance[1]){
+
+                    case "ATK":
+                        System.out.println("you attacked the monster, it attacks you!");
+                        foe.do_attack(playerx);
+                        playerx.do_attack(foe);
+                        //sfxclip.play();
+                        break;
+
+                    case "DEF":
+                        System.out.println("you attacked the monster!- it defended your attack!");
+                        playerx.do_attack(foe);
+                        break;
+
+                    case "HEAL":
+                        System.out.println("you attacked the monster,it tried to heal");
+                        playerx.do_attack(foe);
+                        foe.try_E_heal();
+                        break;
+                }
+
+
+                break;
+            case "DEF"://player defending
+                switch (stance[1]){//monster options
+                    case "ATK":
+                        foe.do_attack(playerx);
+                        System.out.println("you defended against the monsters attack!");
+                        break;
+
+                    case "DEF":
+                        System.out.println("you defended against the monster, it does the same!");
+                        break;
+
+                    case "HEAL":
+                        System.out.println("you healed while the monster helaed!");
+                        if(foe.getNum_heals() >+1){//if can heal
+                            foe.try_E_heal();
+                        }
+                        else {
+                            System.out.println("the monster failed to heal...");
+                        }
+                        break;
+
+                }
+                break;
+            case "HEAL":
+                switch (stance[1]) {//monster options
+                    case "ATK":
+                        System.out.println("healed while the monster attacked!");
+                        playerx.try_heal();
+                        foe.do_attack(playerx);
+                        break;
+
+                    case "DEF":
+                        System.out.println("you try to heal, the monster tried to defend!");
+                        playerx.try_heal();
+                        break;//no damage dealt
+
+                    case "HEAL":
+                        System.out.println("You try to heal, the monster does the same");
+                        playerx.try_heal();
+                        if (foe.getNum_heals() > +1) {//if can heal
+                            foe.try_E_heal();
+                        } else {
+                            System.out.println("the monster failed to heal...");
+                        }
+                        break;
+                }
+                break;
+
+        }
+
+    }
+
+    public void resetstance_all(){
         stance[0] = "NONE";
         stance[1] = "NONE";
         foe.ResetStance();
         playerx.ResetStance();
     }
+
+    public void rngstances_enemy_win (){
+        switch (RNG.nextInt(2)){//randomize action
+            case 0://atk
+                this.foeattack();
+                break;
+            case 1://def
+                this.foedefend();
+                break;
+            case 2://heal if possible
+                this.foeheal();
+                break;
+        }
+
+    }
+
     public Boolean get_wonfight(){
         return wonfight;
     }

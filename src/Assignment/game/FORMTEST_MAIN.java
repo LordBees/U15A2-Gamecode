@@ -1,5 +1,7 @@
 package Assignment.game;
 
+import Assignment.game.Ents.ENT_enemy_easy;
+
 import javax.swing.*;
 
 public class FORMTEST_MAIN {
@@ -31,7 +33,7 @@ public class FORMTEST_MAIN {
 
         JFrame windowFrame_FI = new JFrame("FIGHT");
         windowFrame_FI.setVisible(true);
-        MENU_Fight form_fi = new MENU_Fight();
+        MENU_Fight form_fi = new MENU_Fight(new fight(new player(),new ENT_enemy_easy()));
         windowFrame_FI.setContentPane(form_fi.gameScreenPanel);
         windowFrame_FI.pack();
         windowFrame_FI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

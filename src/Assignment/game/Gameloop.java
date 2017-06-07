@@ -6,6 +6,7 @@ import Assignment.game.Ents.ENT_enemy_med;
 import Assignment.game.roomclasses.*;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -46,6 +47,8 @@ public class Gameloop {
     private RoomParent[] xrooms = new RoomParent[20];
     private RoomParent[] xrooms_int = new ROOM_INTERNAL[3];// new RoomParent[3];
     private String winstate = "fail";//good,bad
+
+    private boolean iswindowed = false;
 
     String gstat = "PROL";//prologue
     boolean ignore_room_gstat = false;//for ignoring room loading of state
@@ -149,50 +152,88 @@ public class Gameloop {
     public void run(){
         System.out.println("-<starting game");
 
+        // is windowed or just console
+        boolean runningvar=true;
+        chs="";
+        while(runningvar)
+        {
+            System.out.println("do you wish to enable windowed mode\n" +
+                               "Type(Y)/(N)");
+            chs = this.get_user_input();
+            if(chs.toUpperCase().equals("Y")){
+                iswindowed = true;
+                runningvar = false;
+            }
+            else if (chs.toUpperCase().equals("N")){
+                runningvar = false;
+
+            }
+
+        }
+        System.out.println("game initialising...");
+
+
         System.out.println("menusound loaded");
         this.bgmclip.load("Menu.wav",true);
         this.bgmclip.play();
         //this.printlnx(this.readdata("test.txt"));
+        //gamemain();
+        ///**
+        if (!iswindowed) {
+            gamemain();
+        }
+        else{
+            gamemain_windowed();
+        }
+         //*/
 
-        gamemain();
 
         System.out.println("-<Quitting game");
+        bgmclip.stop();
     }
 
     public void gamemain(){
         //String gstat = "PROL";//prologue  //moved up to class
-        System.out.println("welcome to the game" +
-                "select a new game (N) or how to play(H)");
-        chs = this.get_user_input();
-        if (chs.toUpperCase().equals("H")){
-            System.out.println("help:");
+        if (iswindowed){
+            JFrame windowFrame_mm = new JFrame("main");
+            windowFrame_mm.setVisible(true);
+            MENU_MainMenu form_mm = new MENU_MainMenu();
+            windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
+            windowFrame_mm.pack();
+            windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         }
-        else{
-            System.out.println("starting game");
-        }
-        //System.out.println("press any key to start>:");
-        //chs = this.get_user_input();
-
-        //this is outside loop as it needs to be there for moment as bgm snd crashes as no music is loaded rather it worked now than not at all
-        System.out.println("you are in a small corridor you can go left or right (L/R)");
-        while (this.isrunning) {
+        else {
+            System.out.println("welcome to the game" +
+                    "select a new game (N) or how to play(H)");
             chs = this.get_user_input();
-            if (chs.toUpperCase().equals("L")){
-                System.out.println("you chose left");
-                this.isrunning = false;
-                rtracker.LoadRoom(xrooms[0]);
+            if (chs.toUpperCase().equals("H")) {
+                System.out.println("help:");
+            } else {
+                System.out.println("starting game");
+            }
+            //System.out.println("press any key to start>:");
+            //chs = this.get_user_input();
 
+            //this is outside loop as it needs to be there for moment as bgm snd crashes as no music is loaded rather it worked now than not at all
+            System.out.println("you are in a small corridor you can go left or right (L/R)");
+            while (this.isrunning) {
+                chs = this.get_user_input();
+                if (chs.toUpperCase().equals("L")) {
+                    System.out.println("you chose left");
+                    this.isrunning = false;
+                    rtracker.LoadRoom(xrooms[0]);
+
+                } else if (chs.toUpperCase().equals("R")) {
+                    System.out.println("you chose right");
+                    this.isrunning = false;
+                    rtracker.LoadRoom(xrooms[1]);
+                } else {
+                    System.out.println("please type a correct choice(L/R)");
+                }
             }
-            else if (chs.toUpperCase().equals("R")){
-                System.out.println("you chose right");
-                this.isrunning = false;
-                rtracker.LoadRoom(xrooms[1]);
-            }
-            else {
-                System.out.println("please type a correct choice(L/R)");
-            }
+            this.isrunning = true;//hack
         }
-        this.isrunning = true;//hack
+        System.out.println("Gameloop entered...");
        while (this.isrunning){
            //game loop
            //chs = this.get_user_input();
@@ -506,15 +547,17 @@ public class Gameloop {
 
                        }
                        else {
-                           this.bgmclip.stop();
-                           this.bgmclip.load("WinFight.wav",true);
-                           this.bgmclip.play();
-                           //rtracker.rewardroomgiver(phero);//this is causing nullptr
-                           System.out.println("your reward for the room is:" +
-                                   "coins:");
+                           System.out.println("you won the fight!");
 
                        }
                    }
+                   //when win
+                   this.bgmclip.stop();
+                   this.bgmclip.load("WinFight.wav",true);
+                   this.bgmclip.play();
+                   //rtracker.rewardroomgiver(phero);//this is causing nullptr
+                   System.out.println("your reward for the room is:" +
+                           "coins:");
                    chs="";
                    while(!chs.toUpperCase().equals("C"))
                    {
@@ -591,6 +634,71 @@ public class Gameloop {
     }
 
 
+    public void gamemain_windowed(){
+        gstat = "FIGHT";
+        boolean isnew = true;
+        while (isrunning){
+            //gstat_H = gstat;
+            switch (gstat){
+
+                case"MAIN":
+                    if (isnew){
+                        do_win_fight();
+                        isnew = false;
+                    }
+
+
+                    break;
+                case"FIGHT":
+                    if (isnew){
+                        do_win_fight();
+                        isnew = false;
+                    }
+
+                    break;
+                case"d":
+                    break;
+                case"f":
+                    break;
+                case"g":
+                    break;
+            }
+        }
+
+
+    }
+
+
+
+    /////////
+
+    ////////
+    ////window methods////
+    ////////
+
+    ////////
+    public void do_win_fight(){
+        JFrame windowFrame_FI = new JFrame("FIGHT");
+        windowFrame_FI.setVisible(true);
+        MENU_Fight form_fi = new MENU_Fight(new fight(phero,new ENT_enemy_easy()));///here for easy
+        windowFrame_FI.setContentPane(form_fi.gameScreenPanel);
+        windowFrame_FI.pack();
+        windowFrame_FI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        windowFrame_FI.setLocationRelativeTo(null);
+    }
+    public void do_win_main(){
+        JFrame windowFrame_mm = new JFrame("main");
+        windowFrame_mm.setVisible(true);
+        MENU_MainMenu form_mm = new MENU_MainMenu();
+        windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
+        windowFrame_mm.pack();
+        windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+
+
+
+    ///////
     public String get_user_input(){//get user input from either menu or data
         String txtcaptured = "N";
         System.out.print(">");
@@ -602,6 +710,9 @@ public class Gameloop {
     public void changegamestate(String new_gamestate){
         this.last_gamestate = this.gamestate;
         this.gamestate = new_gamestate;
+    }
+    public void changegstat(String gstatx){
+        this.gstat = gstatx;
     }
     public void changemusic(String newmus){
         this.bgmclip.load(newmus,true);
