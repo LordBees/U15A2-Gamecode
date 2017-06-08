@@ -112,8 +112,13 @@ public class RoomParent {
         else{
             lootin[0].setI_value(0);
         }
+        /**
         System.out.println("bag additional bag contains:"+lootin[0].getI_value()+
                            "rn:"+this.rtype+this.roomid);
+
+         //debugger code
+         */
+
         /**
          * system for adding coins to roomloot(broken)
          System.out.println(nogold);
@@ -127,11 +132,13 @@ public class RoomParent {
         //lootin[1] = new gold_bag();
         this.lootin[1].setI_value(nogold);//set gold bag as value of coins instead of multiple coins
 
+        /**
         System.out.println("lootdump size-"+lootin.length);
         for (int i=0;i<lootin.length;i++) {
             System.out.print(">"+i);
             System.out.println(this.lootin[i].getI_value());
         }
+         */
 
     }
 
@@ -147,6 +154,7 @@ public class RoomParent {
             lootin[0].givegolditem(target);
         }
         //System.out.print("givinggold..");
+        System.out.println("You got +gold:"+lootin[1].getI_value());
         lootin[1].givegolditem(target);
 
 

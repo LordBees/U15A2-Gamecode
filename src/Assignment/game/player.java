@@ -73,9 +73,10 @@ public class player extends entity {
     public void addto_atkmod(int additional){//adds to attackmod
         this.atk_m = this.atk_m+additional;
     }
-    public void addsword(){
-        if (this.inventory[1].I_name !="SuperSword")
-            this.inventory[1] = new Ssword();
+    public void addsword() {
+        if(true){//if (this.inventory[1].getI_name() !="SuperSword"){
+        this.inventory[1] = new Ssword();
+        }
     }
     public String get_invbyslot(int slotno){
         return this.inventory[slotno].I_name;//returns name of item, in slot
@@ -83,10 +84,16 @@ public class player extends entity {
     public String hassword(){//was int
         //if (get_invbyslot(1).equals("SuperSword")){//commented back in
         //@@@@@
-        if (1 == 1){
+        //if (1 == 1){
+        try{
+        if (this.inventory[1].I_name.equals("SuperSword")){
             return "1";
         }
         else {
+            return "0";
+        }
+        }
+        catch (Exception e){
             return "0";
         }
     }

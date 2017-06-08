@@ -47,7 +47,7 @@ public class MENU_MainMenu {
                 // is clicked
                 //String story = theFight.TakeTurn("a");
                 //storyText.setText(story);
-                Gameloop
+                //Gameloop
 
             }
         });

@@ -42,7 +42,7 @@ public class SND_handler_main {
 
             try {
                 String current = new java.io.File(".").getCanonicalPath();
-                //current = "\\\\KFILESTUDENT01\\StudentHome15\\1\\10740071\\downloads\\gamecode\\gamecodegit-01\\U15A2-Gamecode-master";
+                current = "\\\\KFILESTUDENT01\\StudentHome15\\1\\10740071\\downloads\\gamecode\\gamecodegit-01\\U15A2-Gamecode-master";
                 System.out.println(current + "\\res\\" + Xfile);
                 File file = new File(current + "\\res\\" + Xfile);
                 if (file.exists()) {

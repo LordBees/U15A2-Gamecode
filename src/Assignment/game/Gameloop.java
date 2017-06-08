@@ -95,7 +95,7 @@ public class Gameloop {
         xrooms[15] = new ROOM_empty();
         xrooms[16] = new ROOM_loot();
         xrooms[17] = new ROOM_loot();
-        xrooms[18] = new ROOM_shop();
+        xrooms[18] = new ROOM_shop_preboss();//new ROOM_shop();
         xrooms[19] = new ROOM_encounter_boss();
 
 
@@ -348,7 +348,11 @@ public class Gameloop {
                    this.bgmclip.load("Shop.wav",true);
                    this.bgmclip.play();
                     */
-
+                   if (rtracker.get_Croomid() == 19){
+                       System.out.println("________________\n"+
+                                           "this is the final shop!!"+
+                                           "________________\n");
+                   }
                    System.out.println("________________\n" +
                                       "you are in a shop, you have ("+phero.getmoney()+") gold to spend}+\n" +
                                       "the items for sale are:\n");
@@ -417,7 +421,7 @@ public class Gameloop {
                        case "S":
                            if(phero.canafford(40)){
                                //buy
-                               if (phero.get_invbyslot(1).equals("SuperSword")){
+                               if (false){// hack //(phero.get_invbyslot(1).equals("SuperSword")){
                                    System.out.println("you already have the sword!!");
                                }
                                else {
@@ -460,8 +464,126 @@ public class Gameloop {
                            else if (rtracker.get_Croomid()== xrooms_int[2].getshopid())
                            {
                                System.out.println("BossSsobBossSsob");
-                               rtracker.LoadRoom(xrooms_int[2]);
+                               rtracker.LoadRoom(xrooms[19]);
                            }
+                           /**
+                            * can now put back into for loop
+                            */
+                           //rtracker.LoadRoom(xrooms_int[0]);//load next room(fork internal)
+                           break;
+                   }
+                   break;
+
+               case"SHOPX":
+                   /**
+                    this.bgmclip.stop();
+                    this.bgmclip.load("Shop.wav",true);
+                    this.bgmclip.play();
+                    */
+                   if (rtracker.get_Croomid() == 19){
+                       System.out.println("________________\n"+
+                               "this is the final shop!!"+
+                               "________________\n");
+                   }
+                   System.out.println("________________\n" +
+                           "you are in a shop, you have ("+phero.getmoney()+") gold to spend}+\n" +
+                           "the items for sale are:\n");
+                   System.out.println("-----------------\n" +
+                           "attack increase  (A):cost-6 [current:"+phero.getatk()+"]\n" +
+                           "defence increase (D):cost-10 [current:"+phero.getDef()+"]\n" +
+                           "health increase  (H):cost-13 [current:"+phero.getHealth()+"]\n" +
+                           "health potion    (P):cost-4  [current:"+phero.getNum_heals()+"]\n" +
+                           "super sword      (S):cost-30 [current:"+phero.hassword()+"]\n" +
+                           "-----------------");
+                   System.out.println("what would you like to buy?\n" +
+                           "to leave to the next area type (L)");
+                   chs = this.get_user_input();
+                   switch (chs.toUpperCase()){
+
+                       case "A":
+                           if(phero.canafford(6)){
+                               //buy
+                               phero.addto_atk(1);
+                               phero.spend_gold(6);
+                               System.out.println("you bought:attack increase!");
+                           }
+                           else{
+                               System.out.println("you cannot afford this item(atk++)");
+
+                           }
+                           break;
+
+                       case "D":
+                           if(phero.canafford(10)){
+                               //buy
+                               phero.addto_def(1);
+                               phero.spend_gold(10);
+                               System.out.println("you bought:defence increase!");
+                           }
+                           else{
+                               System.out.println("you cannot afford this item(Def++)");
+
+                           }
+                           break;
+
+                       case "H":
+                           if(phero.canafford(13)){
+                               //buy
+                               phero.addto_health(10);
+                               phero.spend_gold(13);
+                               System.out.println("you bought:health +10 increase!");
+                           }
+                           else{
+                               System.out.println("you cannot afford this item(health+10)");
+                           }
+                           break;
+
+                       case "P":
+                           if(phero.canafford(4)){
+                               //buy
+                               phero.addheal(1);
+                               phero.spend_gold(4);
+                               System.out.println("you bought:a health potion!");
+                           }
+                           else{
+                               System.out.println("you cannot afford this item(health potion+1)");
+                           }
+                           break;
+
+                       case "S":
+                           if(phero.canafford(30)){
+                               //buy
+                               if (false){// hack //(phero.get_invbyslot(1).equals("SuperSword")){
+                                   System.out.println("you already have the sword!!");
+                               }
+                               else {
+                                   phero.addsword();//quick add
+                                   phero.spend_gold(30);
+                                   System.out.println("you bought:the super sword!");
+                               }
+                           }
+                           else{
+                               System.out.println("you cannot afford this item(Sword)");
+                           }
+                           break;
+
+                       case "L"://leave shop
+                           //
+                           //gstat = "FORK";
+                           //this.gstat = "FORK";
+                           System.out.println("You leave the shop...");
+                           //if (rtracker.get_Croomid() == xrooms_int[0])
+                           //for (int i =0;i<xrooms_int.length;i++){
+                           //    System.out.println(rtracker.get_Croomid()+"::"+xrooms_int[i].getshopid());
+                           //    if (rtracker.get_Croomid() == xrooms_int[i].getshopid()){
+                           //        rtracker.LoadRoom(xrooms_int[i]);
+                           //    }
+                           System.out.println(rtracker.get_Croomid());
+                           System.out.println(  xrooms_int[0].getshopid()+":"
+                                   +xrooms_int[1].getshopid()+":"+
+                                   xrooms_int[2].getshopid()+":");
+
+                           rtracker.LoadRoom(xrooms[20]);//load next room
                            /**
                             * can now put back into for loop
                             */
@@ -643,7 +765,7 @@ public class Gameloop {
 
                 case"MAIN":
                     if (isnew){
-                        do_win_fight();
+                        do_win_main();
                         isnew = false;
                     }
 
