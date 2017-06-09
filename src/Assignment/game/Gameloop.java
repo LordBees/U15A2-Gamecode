@@ -267,11 +267,11 @@ public class Gameloop {
                this.bgmclip.load(rtracker.get_roomBGM(), true);
                this.bgmclip.play();
            }
-           else{
-               this.bgmclip.stop();
-               this.bgmclip.play();
-
-           }
+           //else{
+           //    this.bgmclip.stop();
+           //    this.bgmclip.play();
+//
+//           }
 
 
            /**
@@ -673,6 +673,10 @@ public class Gameloop {
                    //System.out.println("DEBUG fightingm:"+thisfoes.length);
                    for(int i =0;i<thisfoes.length;i++)
                    {
+                       this.bgmclip.stop();
+                       this.bgmclip.load("Battle.wav", true);
+                       this.bgmclip.play();
+
                        System.out.println("---------\nyou are fighting a " + thisfoes[i].getE_name());
                        currentfight = new fight(phero, thisfoes[i]);
 
@@ -695,10 +699,7 @@ public class Gameloop {
                            //this.bgmclip.play();
 
                        }
-                       //when win
-                       this.bgmclip.stop();
-                       this.bgmclip.load("WinFight.wav",true);
-                       this.bgmclip.play();
+
                    }
 
                    //rtracker.rewardroomgiver(phero);//this is causing nullptr
@@ -707,6 +708,12 @@ public class Gameloop {
 
                    chs="";
                    if (!this.gstat.equals("DIED")) {
+                       //if (currentfight.get_wonfight()) {
+                           //when win
+                           this.bgmclip.stop();
+                           this.bgmclip.load("WinFight.wav", true);
+                           this.bgmclip.play();
+                       //}
                        while (!chs.toUpperCase().equals("C")) {
                            System.out.println("YOU survived the fight!\n" +
                                    "Type(C) to go to the next room");
@@ -762,24 +769,28 @@ public class Gameloop {
                        }
                        else {
                            System.out.println("you won the fight!");
+                           gstat = "BWIN";//check
+                           ignore_room_gstat = true;
 
 
                        }
-                       //when win
-                       this.bgmclip.stop();
-                       this.bgmclip.load("WinFight.wav",true);
-                       this.bgmclip.play();
+                       if (currentfight.get_wonfight()) {
+                           //when win
+                           this.bgmclip.stop();
+                           this.bgmclip.load("WinFight.wav", true);
+                           this.bgmclip.play();
+                       }
                    }
 
 
                    chs="";
                    if (!this.gstat.equals("BLOSE")) {
                        while (!chs.toUpperCase().equals("C")) {
-                           System.out.println("YOU survived the fight!\n" +
-                                   "Type(C) to go to the next room");
+                           System.out.println("YOU fought the monster!\n" +
+                                   "Type(C) to continue to the epilogue.");
                            chs = this.get_user_input();
                        }
-                       System.out.println("You leave the battle room...");
+                       System.out.println("You leave the dragons lair...");
                        rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
                        //currentfight = new fight(phero,m)
                    }
@@ -820,6 +831,12 @@ public class Gameloop {
 
                case "RSET":
                    ignore_room_gstat = true;
+                   //if (currentfight.get_wonfight()) {
+                       //when win
+                       this.bgmclip.stop();
+                       this.bgmclip.load("Menu.wav", true);
+                       this.bgmclip.play();
+                   //}
                    System.out.println("do you want to retry?" +
                            "\nhow to play(H)\n" +
                            "(Y/N/H)");

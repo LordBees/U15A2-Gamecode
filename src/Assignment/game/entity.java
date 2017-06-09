@@ -21,9 +21,10 @@ public class entity {
     protected int preward = 0;//gold for the player
 
     //snd
-    protected String snd_DAM = "test.wav";
-    protected String snd_HEAL = "test.wav";
-    protected String snd_ATK = "test.wav";
+    protected String snd_DAM = "SFX_dam.wav";
+    protected String snd_HEAL = "SFX_potion.wav";
+    protected String snd_ATK = "SFX_atk.wav";
+    protected String snd_DEF = "SFX_def.wav";
 
 /**
     entity(){

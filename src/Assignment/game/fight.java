@@ -191,7 +191,8 @@ public class fight {
                 break;
 
             case "ATK":
-                sfxclip.load("SFX_atk.wav",false);
+                //sfxclip.load("SFX_atk.wav",false);
+                sfxclip.load(playerx.snd_ATK,false);
                 sfxclip.play();
                 switch (stance[1]){
 
@@ -200,6 +201,8 @@ public class fight {
                         foe.do_attack(playerx);
                         playerx.do_attack(foe);
                         //sfxclip.play();
+                        sfxclip.load(playerx.snd_DAM,false);
+                        sfxclip.play();
                         break;
 
                     case "DEF":
@@ -217,10 +220,14 @@ public class fight {
 
                 break;
             case "DEF"://player defending
+                sfxclip.load(playerx.snd_DEF,false);
+                sfxclip.play();
                 switch (stance[1]){//monster options
                     case "ATK":
                         foe.do_attack(playerx);
                         System.out.println("you defended against the monsters attack!");
+                        sfxclip.load(playerx.snd_DAM,false);
+                        sfxclip.play();
                     break;
 
                     case "DEF":
@@ -240,11 +247,15 @@ public class fight {
                 }
                 break;
             case "HEAL":
+                sfxclip.load(playerx.snd_HEAL,false);
+                sfxclip.play();
                 switch (stance[1]) {//monster options
                     case "ATK":
                         System.out.println("healed while the monster attacked!");
                         playerx.try_heal();
                         foe.do_attack(playerx);
+                        sfxclip.load(playerx.snd_DAM,false);
+                        sfxclip.play();
                         break;
 
                     case "DEF":
