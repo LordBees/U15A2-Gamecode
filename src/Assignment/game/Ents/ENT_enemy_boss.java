@@ -11,6 +11,7 @@ public class ENT_enemy_boss extends entity {
         this.atk = 3;
         this.atk_m=1;
         this.E_name = "Dragon";
+        this.setPreward(900);
     }
 
 }

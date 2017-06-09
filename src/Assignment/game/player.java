@@ -20,6 +20,8 @@ public class player extends entity {
         this.atk = 5;
         this.atk_m=1;
         this.def = 1;
+        this.health = 14;
+        this.healthmax = this.health;
         this.E_name="PLAYER";
     }
 
@@ -103,5 +105,7 @@ public class player extends entity {
 //    public void addto_numheals(){
 //
     //}
-
+public void set_addtohmax(int hpxtra){
+        this.healthmax = this.healthmax+hpxtra;
+}
 }

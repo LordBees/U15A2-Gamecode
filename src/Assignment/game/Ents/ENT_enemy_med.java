@@ -11,6 +11,7 @@ public class ENT_enemy_med extends entity {
         this.atk = 5;
         this.atk_m=1;
         this.E_name = "Skeleton";
+        this.setPreward(7);
     }
 
 }

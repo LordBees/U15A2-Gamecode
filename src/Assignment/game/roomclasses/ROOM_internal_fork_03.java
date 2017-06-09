@@ -10,7 +10,8 @@ public class ROOM_internal_fork_03 extends ROOM_INTERNAL {//solves problem of ho
     public ROOM_internal_fork_03(){
         roombgm = "Shop.wav";
         rtype = "FORK";
-        set_roomforks(new int[]{20,-1,-1});
+        //set_roomforks(new int[]{20,-1,-1});
+        set_roomforks(new int[]{19,-1,-1});
         //setshopid(2);
         setshopid(19);
         //dirx = new int[]{4,5,-1};

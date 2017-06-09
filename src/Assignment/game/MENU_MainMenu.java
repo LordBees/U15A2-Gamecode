@@ -14,7 +14,12 @@ public class MENU_MainMenu {
     private JButton startButton;
     private JTextArea welcomeToTheAdventureTextArea;
 
-    public MENU_MainMenu() {
+
+    private String gstat;
+
+    public MENU_MainMenu(String gstat) {
+        this.gstat = gstat;
+
         /**
         startButton.addActionListener(new ActionListener() {
             @Override
@@ -40,6 +45,7 @@ public class MENU_MainMenu {
         howToPlayButton.addActionListener(listener);
         startButton.addActionListener(listener);
          */
+
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,9 +54,17 @@ public class MENU_MainMenu {
                 //String story = theFight.TakeTurn("a");
                 //storyText.setText(story);
                 //Gameloop
+                //this.gstat
+                setGstat("");
 
             }
         });
 
+    }
+    public String getGstat(){
+        return this.gstat;
+    }
+    public void setGstat(String gstat){
+        this.gstat = gstat;
     }
 }

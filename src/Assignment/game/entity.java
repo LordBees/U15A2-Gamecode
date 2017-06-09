@@ -11,13 +11,14 @@ public class entity {
 
     //actual attributes
     protected int health = 100;//health
-    protected int healthmax = 100;
+    protected int healthmax = 100;//maxhelath
     protected int atk = 1;//attack roller
     protected int atk_m =1;//attack modifier
     protected int def = 1;//defence modifier
     protected int num_heals = 0;//heals
     protected String stance = "None";//set stance //None,Attacking,Defending,Healing;
     protected String E_name = "Nullmonster";// = "MissingName";
+    protected int preward = 0;//gold for the player
 
     //snd
     protected String snd_DAM = "test.wav";
@@ -42,7 +43,13 @@ public class entity {
         this.health = this.health-damagedone;
     }
     protected void heal (int healamt){//heal the creature
+        if ( (healamt+this.health) >this.healthmax) {
+        this.health = this.healthmax;
+        }
+
+        else {
         this.health = this.health+healamt;
+        }
     }
     protected int get_attack(){//entity's attack
         return this.RNG.nextInt(atk)*this.atk_m;//randoms a number within attack range then * by modifier
@@ -58,11 +65,11 @@ public class entity {
             if (raw_dmg<=defdam){//if defence greater than monsters attack,always do 1 point of damage
                 defdam = raw_dmg - 1.0f;//may cause error
             }
-            System.out.println(this.getE_name()+":"+Math.round(raw_dmg-defdam));//dbg
+            System.out.println(this.getE_name()+" did damage:"+Math.round(raw_dmg-defdam));//dbg
             target.damage(Math.round(raw_dmg-defdam));
         }
         else{
-            System.out.println(this.getE_name()+":"+this.get_attack());
+            System.out.println(this.getE_name()+" did damage:"+this.get_attack());
             target.damage(this.get_attack());//damage target for attack value of this entities attack value
         }
     }
@@ -117,5 +124,11 @@ public class entity {
         if (this.health>this.healthmax){
             this.health= this.healthmax;
         }
+    }
+    public void setPreward(int prx){
+        this.preward = prx;
+    }
+    public int getPreward(){
+        return this.preward;
     }
 }

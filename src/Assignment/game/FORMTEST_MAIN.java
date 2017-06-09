@@ -62,7 +62,7 @@ public class FORMTEST_MAIN {
 
         JFrame windowFrame_mm = new JFrame("main");
         windowFrame_mm.setVisible(true);
-        MENU_MainMenu form_mm = new MENU_MainMenu();
+        MENU_MainMenu form_mm = new MENU_MainMenu("a");
         windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
         windowFrame_mm.pack();
         windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

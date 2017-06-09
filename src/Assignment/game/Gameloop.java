@@ -1,5 +1,6 @@
 package Assignment.game;
 
+import Assignment.game.Ents.ENT_enemy_boss;
 import Assignment.game.Ents.ENT_enemy_easy;
 import Assignment.game.Ents.ENT_enemy_hard;
 import Assignment.game.Ents.ENT_enemy_med;
@@ -38,6 +39,7 @@ public class Gameloop {
 
     //attribute vars//
     private boolean isrunning = true;//if running
+    private boolean quittime = false;
     String gamestate = "D";//gamestate (what is happening in game/)
     String last_gamestate = "D";//last gamestate
 
@@ -80,21 +82,23 @@ public class Gameloop {
         xrooms[0] = new ROOM_loot();
         xrooms[1] = new ROOM_encounter_easy();
         xrooms[2] = new ROOM_shop();
+
         xrooms[3] = new ROOM_encounter_med();
         xrooms[4] = new ROOM_empty();
-        xrooms[5] = new ROOM_encounter_med();
-        xrooms[6] = new ROOM_encounter_hard();
+            xrooms[5] = new ROOM_encounter_med();
+            xrooms[6] = new ROOM_encounter_hard();
         xrooms[7] = new ROOM_loot();
         xrooms[8] = new ROOM_loot();
-        xrooms[9] = new ROOM_empty();
-        xrooms[10] = new ROOM_loot();
+            xrooms[9] = new ROOM_empty();
+            xrooms[10] = new ROOM_loot();
+
         xrooms[11] = new ROOM_shop();
-        xrooms[12] = new ROOM_encounter_easy();
-        xrooms[13] = new ROOM_encounter_med();
-        xrooms[14] = new ROOM_encounter_hard();
-        xrooms[15] = new ROOM_empty();
-        xrooms[16] = new ROOM_loot();
-        xrooms[17] = new ROOM_loot();
+            xrooms[12] = new ROOM_encounter_easy();
+                xrooms[13] = new ROOM_encounter_med();
+                    xrooms[14] = new ROOM_encounter_hard();
+            xrooms[15] = new ROOM_empty();
+                xrooms[16] = new ROOM_loot();
+                    xrooms[17] = new ROOM_loot();
         xrooms[18] = new ROOM_shop_preboss();//new ROOM_shop();
         xrooms[19] = new ROOM_encounter_boss();
 
@@ -109,21 +113,21 @@ public class Gameloop {
 
         xrooms[3].setup(4,5);
         xrooms[4].setup(5,6);
-        xrooms[5].setup(6,7);
-        xrooms[6].setup(7,8);
+            xrooms[5].setup(6,7);
+            xrooms[6].setup(7,8);
         xrooms[7].setup(8,9);
         xrooms[8].setup(9,10);
-        xrooms[9].setup(10,11);
-        xrooms[10].setup(11,11);
+            xrooms[9].setup(10,11);
+            xrooms[10].setup(11,11);
 
         xrooms[11].setup(12,-1);
 
-        xrooms[12].setup(13,3);
-        xrooms[13].setup(14,3);
-        xrooms[14].setup(15,3);
-        xrooms[15].setup(16,3);
-        xrooms[16].setup(17,3);
-        xrooms[17].setup(18,3);
+        xrooms[12].setup(13,15);
+        xrooms[13].setup(14,16);
+        xrooms[14].setup(15,17);
+        xrooms[15].setup(16,18);
+        xrooms[16].setup(17,18);
+        xrooms[17].setup(18,18);
 
         xrooms[18].setup(19,-1);
 
@@ -153,6 +157,7 @@ public class Gameloop {
         System.out.println("-<starting game");
 
         // is windowed or just console
+        this.isrunning = true;
         boolean runningvar=true;
         chs="";
         while(runningvar)
@@ -197,7 +202,7 @@ public class Gameloop {
         if (iswindowed){
             JFrame windowFrame_mm = new JFrame("main");
             windowFrame_mm.setVisible(true);
-            MENU_MainMenu form_mm = new MENU_MainMenu();
+            MENU_MainMenu form_mm = new MENU_MainMenu(this.gstat);
             windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
             windowFrame_mm.pack();
             windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -235,6 +240,7 @@ public class Gameloop {
         }
         System.out.println("Gameloop entered...");
        while (this.isrunning){
+           chs="";
            //game loop
            //chs = this.get_user_input();
            /**
@@ -260,6 +266,11 @@ public class Gameloop {
                this.bgmclip.stop();
                this.bgmclip.load(rtracker.get_roomBGM(), true);
                this.bgmclip.play();
+           }
+           else{
+               this.bgmclip.stop();
+               this.bgmclip.play();
+
            }
 
 
@@ -397,6 +408,7 @@ public class Gameloop {
                        case "H":
                            if(phero.canafford(15)){
                                //buy
+                               phero.set_addtohmax(10);
                                phero.addto_health(10);
                                phero.spend_gold(15);
                                System.out.println("you bought:health +10 increase!");
@@ -481,10 +493,12 @@ public class Gameloop {
                     this.bgmclip.play();
                     */
                    if (rtracker.get_Croomid() == 19){
-                       System.out.println("________________\n"+
-                               "this is the final shop!!"+
-                               "________________\n");
+                       System.out.println(  "________________\n"+
+                                            "this is the final shop!!\n" +
+                                            "!!!!discounted stock!!!!\n"+
+                                            "________________\n");
                    }
+
                    System.out.println("________________\n" +
                            "you are in a shop, you have ("+phero.getmoney()+") gold to spend}+\n" +
                            "the items for sale are:\n");
@@ -529,6 +543,7 @@ public class Gameloop {
                        case "H":
                            if(phero.canafford(13)){
                                //buy
+                               phero.set_addtohmax(10);
                                phero.addto_health(10);
                                phero.spend_gold(13);
                                System.out.println("you bought:health +10 increase!");
@@ -583,7 +598,7 @@ public class Gameloop {
                                    +xrooms_int[1].getshopid()+":"+
                                    xrooms_int[2].getshopid()+":");
 
-                           rtracker.LoadRoom(xrooms[20]);//load next room
+                           rtracker.LoadRoom(xrooms[19]);//load next room
                            /**
                             * can now put back into for loop
                             */
@@ -641,6 +656,7 @@ public class Gameloop {
                            thisfoes = new entity[]{new ENT_enemy_easy()};
                            break;
                    }
+                   System.out.println(">>>>>>>"+rtracker.getCombattype());
                    //end fight setup
 
                    //user feedback
@@ -663,6 +679,82 @@ public class Gameloop {
                        if (!currentfight.fighterloop())
                        {
                            gstat = "DIED";//check
+                           ignore_room_gstat = true;
+                       }
+                       else if (!currentfight.get_wonfight()) {
+                           System.out.println("you got nothing for the fight as you ran away");
+
+                       }
+                       else {
+                           System.out.println("you won the fight!");
+                           System.out.println("reward +Gold: "+thisfoes[i].getPreward());
+                           phero.pickup_gold(thisfoes[i].getPreward());
+                           ////when win
+                           //this.bgmclip.stop();
+                           //this.bgmclip.load("WinFight.wav",true);
+                           //this.bgmclip.play();
+
+                       }
+                       //when win
+                       this.bgmclip.stop();
+                       this.bgmclip.load("WinFight.wav",true);
+                       this.bgmclip.play();
+                   }
+
+                   //rtracker.rewardroomgiver(phero);//this is causing nullptr
+                   //System.out.println("your reward for the room is:" +
+                   //        "coins:");
+
+                   chs="";
+                   if (!this.gstat.equals("DIED")) {
+                       while (!chs.toUpperCase().equals("C")) {
+                           System.out.println("YOU survived the fight!\n" +
+                                   "Type(C) to go to the next room");
+                           chs = this.get_user_input();
+                       }
+                       System.out.println("You leave the battle room...");
+                       rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
+                       //currentfight = new fight(phero,m)
+                   }
+                   break;
+
+
+               case "BOSS":
+                   System.out.println("this is the BOSS!!!");
+
+                   //entity[] thisfoes;// = new entity[5];//this should be 4
+                   //fight currentfight;
+
+                   //System.out.println("DEBUG fightingmx:"+thisfoes.length+"rtrackerrrom:"+rtracker.get_Croomid());
+
+                   //thisfoes = rtracker.getfoescombat();
+                   /**
+                    * //debug by putting raw into redo code to make pull out entity names out of class
+                    * then instance them in gameloop append to thisfoes instead of putting classes into the array
+                    */
+
+
+                   thisfoes = new entity[] {new ENT_enemy_easy(),new ENT_enemy_med(),new ENT_enemy_hard(),new ENT_enemy_boss()};
+
+                   //System.out.println(">>>>>>>"+rtracker.getCombattype());
+                   //end fight setup
+
+                   //user feedback
+
+                   System.out.println("you are in a room with the BOSS and its " + thisfoes.length + " minions");
+
+                   System.out.println    ("_______________\n");
+                   //begin fight
+                   //System.out.println("DEBUG fightingm:"+thisfoes.length);
+                   for(int i =0;i<thisfoes.length;i++)
+                   {
+                       System.out.println("---------\nyou are fighting a " + thisfoes[i].getE_name());
+                       currentfight = new fight(phero, thisfoes[i]);
+
+                       if (!currentfight.fighterloop())
+                       {
+                           gstat = "BLOSE";//check
+                           ignore_room_gstat = true;
                        }
                        else if (!currentfight.get_wonfight()) {
                            System.out.println("you got nothing for the fight as you ran away");
@@ -671,30 +763,27 @@ public class Gameloop {
                        else {
                            System.out.println("you won the fight!");
 
+
                        }
+                       //when win
+                       this.bgmclip.stop();
+                       this.bgmclip.load("WinFight.wav",true);
+                       this.bgmclip.play();
                    }
-                   //when win
-                   this.bgmclip.stop();
-                   this.bgmclip.load("WinFight.wav",true);
-                   this.bgmclip.play();
-                   //rtracker.rewardroomgiver(phero);//this is causing nullptr
-                   System.out.println("your reward for the room is:" +
-                           "coins:");
+
+
                    chs="";
-                   while(!chs.toUpperCase().equals("C"))
-                   {
-                       System.out.println("YOU WON!\n" +
-                               "Type(C) to go to the next room");
-                       chs = this.get_user_input();
+                   if (!this.gstat.equals("BLOSE")) {
+                       while (!chs.toUpperCase().equals("C")) {
+                           System.out.println("YOU survived the fight!\n" +
+                                   "Type(C) to go to the next room");
+                           chs = this.get_user_input();
+                       }
+                       System.out.println("You leave the battle room...");
+                       rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
+                       //currentfight = new fight(phero,m)
                    }
-                   System.out.println("You leave the battle room...");
-                   rtracker.LoadRoom(xrooms[rtracker.get_Nroomid()]);//load next room
-                   //currentfight = new fight(phero,m)
-                   break;
 
-
-               case "BOSS":
-                   System.out.println("this is the BOSS!!!");
 
                    break;
 
@@ -720,21 +809,34 @@ public class Gameloop {
 
 
                case "BWIN":
+                   ignore_room_gstat = true;
                    break;
 
 
                case "BLOSE":
+                   ignore_room_gstat = true;
                    break;
 
 
                case "RSET":
-                   System.out.println("do you want to retry(y/n)");
+                   ignore_room_gstat = true;
+                   System.out.println("do you want to retry?" +
+                           "\nhow to play(H)\n" +
+                           "(Y/N/H)");
                    chs = this.get_user_input();
-                   if (chs.toUpperCase().equals("Y")){
+                   chs = chs.toUpperCase();
+                   if (chs.equals("Y")){
                        System.out.println("restarting game >UNIMP");
-                    }
-                    else if (chs.toUpperCase().equals("N")){
                        this.isrunning = false;
+                    }
+                    else if (chs.equals("N")){
+                       this.isrunning = false;
+                       //this.quittime = false;
+                       setquittime(false);
+                   }
+                   else  if (chs.equals("H")){
+                        System.out.println("how2play");
+
                    }
                    else{
                         System.out.println("incorrect input, please try again");
@@ -765,7 +867,7 @@ public class Gameloop {
 
                 case"MAIN":
                     if (isnew){
-                        do_win_main();
+                        do_win_main(gstat);
                         isnew = false;
                     }
 
@@ -808,10 +910,10 @@ public class Gameloop {
         windowFrame_FI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         windowFrame_FI.setLocationRelativeTo(null);
     }
-    public void do_win_main(){
+    public void do_win_main(String gstat){
         JFrame windowFrame_mm = new JFrame("main");
         windowFrame_mm.setVisible(true);
-        MENU_MainMenu form_mm = new MENU_MainMenu();
+        MENU_MainMenu form_mm = new MENU_MainMenu(gstat);
         windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
         windowFrame_mm.pack();
         windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -844,6 +946,12 @@ public class Gameloop {
         for (int i =0;i>xdatin.length;i++){
             System.out.println(xdatin[i]);
         }
+    }
+    public boolean getquittime(){
+        return this.quittime;
+    }
+    public void setquittime(boolean xquit){
+        this.quittime = xquit;
     }
     public String[] readdata(String fn){
         String[] xdata = {};

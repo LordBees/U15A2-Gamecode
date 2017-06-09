@@ -42,7 +42,7 @@ public class SND_handler_main {
 
             try {
                 String current = new java.io.File(".").getCanonicalPath();
-                current = "\\\\KFILESTUDENT01\\StudentHome15\\1\\10740071\\downloads\\gamecode\\gamecodegit-01\\U15A2-Gamecode-master";
+                //current = "\\\\KFILESTUDENT01\\StudentHome15\\1\\10740071\\downloads\\gamecode\\gamecodegit-01\\U15A2-Gamecode-master";
                 System.out.println(current + "\\res\\" + Xfile);
                 File file = new File(current + "\\res\\" + Xfile);
                 if (file.exists()) {
@@ -68,7 +68,9 @@ public class SND_handler_main {
         return this.sndpath+this.filen;//test
     }
 
-    public void play(){
+    public void play() {
+    }
+    public void s(){
         //this.isplaying = true
         clipsnd.setFramePosition(0);  // Must always rewind!
         if (this.isbgm) {

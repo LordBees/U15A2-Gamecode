@@ -40,8 +40,8 @@ public class fight {
         boolean playersurvived = false;
         wonfight = false;
         while (fighting){
-            System.out.println(playerx.do_isdead());
-            System.out.println("health="+playerx.health);
+            //System.out.println(playerx.do_isdead());
+            System.out.println("PLAYER health = "+playerx.health);
             if (playerx.do_isdead() == true) {//if player dies
                 System.out.println("you died in battle!" +
                         "\nslain by a"+foe.getE_name());
@@ -228,7 +228,7 @@ public class fight {
                     break;
 
                     case "HEAL":
-                        System.out.println("you healed while the monster helaed!");
+                        System.out.println("you healed while the monster healed!");
                         if(foe.getNum_heals() >+1){//if can heal
                             foe.try_E_heal();
                         }
@@ -266,6 +266,7 @@ public class fight {
 
 
     }
+    System.out.println("\n");
         //
 
         //clear stances
@@ -280,33 +281,32 @@ public class fight {
     public boolean fighterloop_win(){
         boolean playersurvived = false;
         wonfight = false;
-        if (true){
-            System.out.println(playerx.do_isdead());
-            System.out.println("health="+playerx.health);
-            if (playerx.do_isdead() == true) {//if player dies
-                System.out.println("you died in battle!" +
-                        "\nslain by a"+foe.getE_name());
-                this.fighting = false;
-                playersurvived = false;
-                wonfight = false;
+        System.out.println(playerx.do_isdead());
+        System.out.println("health="+playerx.health);
+        if (playerx.do_isdead() == true) {//if player dies
+            System.out.println("you died in battle!" +
+                    "\nslain by a"+foe.getE_name());
+            this.fighting = false;
+            playersurvived = false;
+            wonfight = false;
+        }
+        else if (foe.do_isdead() == true){//if foe dies
+            this.fighting = false;
+            System.out.println("you defeated a "+foe.getE_name());
+            playersurvived = true;
+            wonfight = true;
+        }
+        else{
+            //fight
+
+
             }
-            else if (foe.do_isdead() == true){//if foe dies
-                this.fighting = false;
-                System.out.println("you defeated a "+foe.getE_name());
-                playersurvived = true;
-                wonfight = true;
-            }
-            else{
-                //fight
+            //enemy turn
+            System.out.println("the monster ("+foe.getE_name()+") is doing something!");
 
 
-                }
-                //enemy turn
-                System.out.println("the monster ("+foe.getE_name()+") is doing something!");
+            //resolveturn();
 
-
-                //resolveturn();
-            }
 
 
         return playersurvived;
