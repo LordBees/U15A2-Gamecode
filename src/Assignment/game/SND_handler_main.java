@@ -69,8 +69,8 @@ public class SND_handler_main {
     }
 
     public void play() {
-    }
-    public void s(){
+    //}
+    //public void s(){
         //this.isplaying = true
         clipsnd.setFramePosition(0);  // Must always rewind!
         if (this.isbgm) {

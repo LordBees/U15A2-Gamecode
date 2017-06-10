@@ -97,9 +97,12 @@ public class MENU_Fight {
                 if (!battlex.get_isfighting_win()) {
                     update_battlelog("you leave the room");
                     //datstat = "c";
+                    //gameScreenPanel.setVisible(false);
+                    gameScreenPanel.setVisible(false);
+
                 }
                 else{
-                System.out.println("currently fighting to leave the room please run away!");
+                System.out.println("currently fighting, to leave the room please run away!");
                 }
 
             }

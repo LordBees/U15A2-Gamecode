@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -36,6 +37,10 @@ public class Gameloop {
 
     //player
     private player phero = new player();
+
+    //rng
+    //rng
+    protected Random RNG = new Random();//rng
 
     //attribute vars//
     private boolean isrunning = true;//if running
@@ -177,10 +182,12 @@ public class Gameloop {
         }
         System.out.println("game initialising...");
 
+        if (!iswindowed) {
 
-        System.out.println("menusound loaded");
-        this.bgmclip.load("Menu.wav",true);
-        this.bgmclip.play();
+            System.out.println("menusound loaded");
+            this.bgmclip.load("Menu.wav", true);
+            this.bgmclip.play();
+        }
         //this.printlnx(this.readdata("test.txt"));
         //gamemain();
         ///**
@@ -894,11 +901,30 @@ public class Gameloop {
 
         //
         boolean isnew = true;
+        int roomsbeaten = 0;
+
         while (isrunning){
             //gstat_H = gstat;
-            gstat = "MAIN";
-            switch (gstat){
+            gstat = "FIGHT";
+            if (roomsbeaten==20){
+                gstat = "BOSS";
+            }
+            else{
+                switch (this.RNG.nextInt(3)) {
+                    case 1:
+                    break;
+                    case 2:
+                    break;
+                    case 3:
+                    break;
 
+                    //case 4:
+                    //break;
+
+                }
+            }
+
+            switch (gstat){
                 case"MAIN":
                     if (isnew){
                         do_win_main(gstat);
@@ -909,7 +935,11 @@ public class Gameloop {
                     break;
                 case"FIGHT":
                     if (isnew){
-                        do_win_fight();
+                        //sfxclip.stop();
+                        sfxclip.load("Battle.wav", true);
+                        sfxclip.play();
+                        //break;//no damag
+                        do_win_fight(1);
                         isnew = false;
                     }
 
@@ -941,7 +971,19 @@ public class Gameloop {
 
     }
 
+public void gameloop_win2(){
+        int leftorright = 0;
+        switch (leftorright){
+            case 1://left
 
+            break;
+
+            case 0:
+            break;
+            case -1://
+            break;
+        }
+}
 
     /////////
 
@@ -950,13 +992,31 @@ public class Gameloop {
     ////////
 
     ////////
-    public void do_win_fight(){
+    public void do_win_fight(int scale){
         JFrame windowFrame_FI = new JFrame("FIGHT");
         windowFrame_FI.setVisible(true);
-        MENU_Fight form_fi = new MENU_Fight(new fight(phero,new ENT_enemy_easy()));///here for easy
+        fight fscale = new fight(phero,new ENT_enemy_easy());
+
+        switch (scale){
+            case 1:
+                fscale = new fight(phero,new ENT_enemy_easy());
+                break;
+            case 2:
+                fscale = new fight(phero,new ENT_enemy_med());
+                break;
+            case 3:
+                fscale = new fight(phero,new ENT_enemy_hard());
+                break;
+            case 4:
+                fscale = new fight(phero,new ENT_enemy_boss());
+                break;
+        }
+
+        MENU_Fight form_fi = new MENU_Fight(fscale);///here for easy
+        //MENU_Fight form_fi = new MENU_Fight(new fight(phero,new ENT_enemy_easy()));///here for easy
         windowFrame_FI.setContentPane(form_fi.gameScreenPanel);
         windowFrame_FI.pack();
-        windowFrame_FI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        windowFrame_FI.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         windowFrame_FI.setLocationRelativeTo(null);
     }
 
@@ -966,7 +1026,7 @@ public class Gameloop {
         MENU_MainMenu form_mm = new MENU_MainMenu(gstat);
         windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
         windowFrame_mm.pack();
-        windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        windowFrame_mm.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
     public player do_win_shop(String gstat){
@@ -975,7 +1035,7 @@ public class Gameloop {
         MENU_Shop form_sh = new MENU_Shop(this.phero,false);
         windowFrame_sh.setContentPane(form_sh.gameScreenPanel);
         windowFrame_sh.pack();
-        windowFrame_sh.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        windowFrame_sh.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         return form_sh.updateplayerfromshop();
 
     }
@@ -986,7 +1046,7 @@ public class Gameloop {
         MENU_LootOrBlank form_lb = new MENU_LootOrBlank(gpickup);
         windowFrame_lb.setContentPane(form_lb.gameScreenPanel);
         windowFrame_lb.pack();
-        windowFrame_lb.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        windowFrame_lb.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
 

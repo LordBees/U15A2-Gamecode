@@ -13,8 +13,9 @@ public class fight {
 
     //user input
     private Scanner cons_input = new Scanner(System.in);
-
+    //rng
     protected Random RNG = new Random();//rng
+
     private boolean fighting = true;
     private String chs;
 
@@ -374,40 +375,53 @@ public class fight {
                     break;
 
                 case "ATK":
-                    //sfxclip.load("SFX_atk.wav", false);
-                    //sfxclip.play();
+                    sfxclip.load("SFX_atk.wav", false);
+                    sfxclip.play();
+
                     switch (stance[1]) {
 
                         case "ATK":
                             System.out.println("you attacked the monster, it attacks you!");
                             foe.do_attack(playerx);
                             playerx.do_attack(foe);
+                            sfxclip.load("SFX_dam.wav", false);
+                            sfxclip.play();
                             //sfxclip.play();
                             break;
 
                         case "DEF":
                             System.out.println("you attacked the monster!- it defended your attack!");
                             playerx.do_attack(foe);
+                            sfxclip.load("SFX_def.wav", false);
+                            sfxclip.play();
                             break;
 
                         case "HEAL":
                             System.out.println("you attacked the monster,it tried to heal");
                             playerx.do_attack(foe);
                             foe.try_E_heal();
+                            sfxclip.load("SFX_potion.wav", false);
+                            sfxclip.play();
                             break;
                     }
 
 
                     break;
                 case "DEF"://player defending
+                    sfxclip.load("SFX_def.wav", false);
+                    sfxclip.play();
                     switch (stance[1]) {//monster options
                         case "ATK":
                             foe.do_attack(playerx);
                             System.out.println("you defended against the monsters attack!");
+                            sfxclip.load("SFX_atk.wav", false);
+                            sfxclip.play();
                             break;
 
                         case "DEF":
                             System.out.println("you defended against the monster, it does the same!");
+                            sfxclip.load("SFX_def.wav", false);
+                            sfxclip.play();
                             break;
 
                         case "HEAL":
@@ -417,21 +431,29 @@ public class fight {
                             } else {
                                 System.out.println("the monster failed to heal...");
                             }
+                            sfxclip.load("SFX_potion.wav", false);
+                            sfxclip.play();
                             break;
 
                     }
                     break;
                 case "HEAL":
+                    sfxclip.load("SFX_potion.wav", false);
+                    sfxclip.play();
                     switch (stance[1]) {//monster options
                         case "ATK":
                             System.out.println("healed while the monster attacked!");
                             playerx.try_heal();
                             foe.do_attack(playerx);
+                            sfxclip.load("SFX_dam.wav", false);
+                            sfxclip.play();
                             break;
 
                         case "DEF":
                             System.out.println("you try to heal, the monster tried to defend!");
                             playerx.try_heal();
+                            sfxclip.load("SFX_def.wav", false);
+                            sfxclip.play();
                             break;//no damage dealt
 
                         case "HEAL":
@@ -442,7 +464,11 @@ public class fight {
                             } else {
                                 System.out.println("the monster failed to heal...");
                             }
-                            break;
+                            sfxclip.load("SFX_potion.wav", false);
+                            sfxclip.play();
+                            break;//no damag
+                        //break;
+
                     }
                     break;
 
