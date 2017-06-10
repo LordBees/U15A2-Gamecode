@@ -13,21 +13,25 @@ public class MENU_Shop {
     private JButton BUY_HEALTH;
     private JButton BUY_DEF;
     private JButton BUY_ATK;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
+    private JTextField txt_atkstat;
+    private JTextField txt_defstat;
+    private JTextField txt_hpstat;
+    private JTextField txt_atkcost;
+    private JTextField txt_defcost;
+    private JTextField txt_healthcost;
     private JButton upgradeSword40Button;
-    private JTextArea textArea1;
+    private JTextArea swordarea;
     private JButton continueButton;
     private JTextArea WELCOMETOTHESHOPTextArea;
     private JTextField currentStatsTextField;
     private JTextField noPotionsCarriedTextField;
     private JButton BUY_POTION_HEAL;
+    private JTextField costTextField;
+    private JTextField costTextField1;
 
-    public MENU_Shop() {
+    public MENU_Shop(player playerx) {
+
+        /**
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,6 +46,50 @@ public class MENU_Shop {
         upgradeSword40Button.addActionListener(listener);
         BUY_POTION_HEAL.addActionListener(listener);
         continueButton.addActionListener(listener);
+         */
+        continueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //if (!battlex.get_isfighting_win()) {
+                //    update_battlelog("you leave the room");
+                //    //datstat = "c";
+                //}
+                //else{
+                //    System.out.println("currently fighting to leave the room please run away!");
+                //}
+
+            }
+        });
+        continueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //if (!battlex.get_isfighting_win()) {
+                //    update_battlelog("you leave the room");
+                //    //datstat = "c";
+                //}
+                //else{
+                //    System.out.println("currently fighting to leave the room please run away!");
+                //}
+
+            }
+        });
     }
 
 }
+/**
+ * continueButton.addActionListener(new ActionListener() {
+@Override
+public void actionPerformed(ActionEvent e) {
+if (!battlex.get_isfighting_win()) {
+update_battlelog("you leave the room");
+//datstat = "c";
+}
+else{
+System.out.println("currently fighting to leave the room please run away!");
+}
+
+}
+});
+ */

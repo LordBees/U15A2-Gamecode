@@ -826,6 +826,13 @@ public class Gameloop {
 
                case "BLOSE":
                    ignore_room_gstat = true;
+
+                   ///
+
+                   System.out.println("BAD ending!");
+
+                   ///
+                   gstat = "RSET";
                    break;
 
 
@@ -864,7 +871,7 @@ public class Gameloop {
                default:
                    System.out.println("GSERROR!!!");
                    //TimeUnit
-                   int x=1;
+                   int x=1;//hang on invalid so data
                    while (1==x){
                    }
                    break;
@@ -876,10 +883,15 @@ public class Gameloop {
 
 
     public void gamemain_windowed(){
+        //
         gstat = "FIGHT";
+        String ftype = "EASY";
+
+        //
         boolean isnew = true;
         while (isrunning){
             //gstat_H = gstat;
+            gstat = "SHOP";
             switch (gstat){
 
                 case"MAIN":
@@ -897,12 +909,21 @@ public class Gameloop {
                     }
 
                     break;
-                case"d":
+
+
+                case"SHOP":
+                    if (isnew){
+                        do_win_shop(gstat);
+                        isnew = false;
+                    }
                     break;
+
                 case"f":
                     break;
+
                 case"g":
                     break;
+
             }
         }
 
@@ -927,6 +948,7 @@ public class Gameloop {
         windowFrame_FI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         windowFrame_FI.setLocationRelativeTo(null);
     }
+
     public void do_win_main(String gstat){
         JFrame windowFrame_mm = new JFrame("main");
         windowFrame_mm.setVisible(true);
@@ -934,6 +956,25 @@ public class Gameloop {
         windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
         windowFrame_mm.pack();
         windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    public void do_win_shop(String gstat){
+        JFrame windowFrame_sh = new JFrame("shop");
+        windowFrame_sh.setVisible(true);
+        MENU_Shop form_sh = new MENU_Shop();
+        windowFrame_sh.setContentPane(form_sh.gameScreenPanel);
+        windowFrame_sh.pack();
+        windowFrame_sh.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+    }
+
+    public void do_win_lorb(String gstat){
+        JFrame windowFrame_lb = new JFrame("lorb");
+        windowFrame_lb.setVisible(true);
+        MENU_LootOrBlank form_lb = new MENU_LootOrBlank();
+        windowFrame_lb.setContentPane(form_lb.gameScreenPanel);
+        windowFrame_lb.pack();
+        windowFrame_lb.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 
