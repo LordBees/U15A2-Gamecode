@@ -1,9 +1,15 @@
 package Assignment.game;
 
+import Assignment.game.Ents.ENT_enemy_boss;
+import Assignment.game.Ents.ENT_enemy_easy;
+import Assignment.game.Ents.ENT_enemy_hard;
+import Assignment.game.Ents.ENT_enemy_med;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Random;
 
 /**
  * Created by Spartan 2 on 2017-05-19.
@@ -19,8 +25,9 @@ public class MENU_MainMenu {
 
     private String gstat;
 
-    public MENU_MainMenu(String gstat) {
+    public MENU_MainMenu(String gstat,player phero) {
         this.gstat = gstat;
+
         doimageprep();
 
         /**
@@ -60,7 +67,40 @@ public class MENU_MainMenu {
                 //this.gstat
                 setGstat("");
 
-            }
+                ///hack to get working
+                int scale;
+
+                Random RNGstat = new Random();
+                scale = RNGstat.nextInt(3);
+
+                    JFrame windowFrame_FI = new JFrame("FIGHT");
+                    windowFrame_FI.setVisible(true);
+                    fight fscale = new fight(phero,new ENT_enemy_easy());
+
+                    switch (scale){
+                        case 1:
+                            fscale = new fight(phero,new ENT_enemy_easy());
+                            break;
+                        case 2:
+                            fscale = new fight(phero,new ENT_enemy_med());
+                            break;
+                        case 3:
+                            fscale = new fight(phero,new ENT_enemy_hard());
+                            break;
+                        case 4:
+                            fscale = new fight(phero,new ENT_enemy_boss());
+                            break;
+                    }
+
+                    MENU_Fight form_fi = new MENU_Fight(fscale);///here for easy
+                    //MENU_Fight form_fi = new MENU_Fight(new fight(phero,new ENT_enemy_easy()));///here for easy
+                    windowFrame_FI.setContentPane(form_fi.gameScreenPanel);
+                    windowFrame_FI.pack();
+                    windowFrame_FI.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                    windowFrame_FI.setLocationRelativeTo(null);
+                }
+
+
         });
 
     }

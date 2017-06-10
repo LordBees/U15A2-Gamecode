@@ -209,7 +209,7 @@ public class Gameloop {
         if (iswindowed){
             JFrame windowFrame_mm = new JFrame("main");
             windowFrame_mm.setVisible(true);
-            MENU_MainMenu form_mm = new MENU_MainMenu(this.gstat);
+            MENU_MainMenu form_mm = new MENU_MainMenu(this.gstat,phero);
             windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
             windowFrame_mm.pack();
             windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -905,7 +905,7 @@ public class Gameloop {
 
         while (isrunning){
             //gstat_H = gstat;
-            gstat = "FIGHT";
+            gstat = "MAIN";
             if (roomsbeaten==20){
                 gstat = "BOSS";
             }
@@ -940,7 +940,8 @@ public class Gameloop {
                         sfxclip.play();
                         //break;//no damag
                         do_win_fight(1);
-                        isnew = false;
+                        System.out.println(2);
+                        isnew = false;//Random RNGstat = new Random();
                     }
 
                     break;
@@ -1023,7 +1024,7 @@ public void gameloop_win2(){
     public void do_win_main(String gstat){
         JFrame windowFrame_mm = new JFrame("main");
         windowFrame_mm.setVisible(true);
-        MENU_MainMenu form_mm = new MENU_MainMenu(gstat);
+        MENU_MainMenu form_mm = new MENU_MainMenu(gstat,phero);
         windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
         windowFrame_mm.pack();
         windowFrame_mm.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
