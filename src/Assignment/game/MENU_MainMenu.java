@@ -3,6 +3,7 @@ package Assignment.game;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  * Created by Spartan 2 on 2017-05-19.
@@ -20,6 +21,7 @@ public class MENU_MainMenu {
 
     public MENU_MainMenu(String gstat) {
         this.gstat = gstat;
+        doimageprep();
 
         /**
         startButton.addActionListener(new ActionListener() {
@@ -63,8 +65,23 @@ public class MENU_MainMenu {
 
     }
     public void doimageprep(){
-        ImageIcon icon = createImageIcon("images/middle.gif");
+        //ImageIcon icon = createImageIcon("images/middle.gif");
+        String Xfile = "ASCII_titlepic.png";
+    try {
+        String current = new java.io.File(".").getCanonicalPath();
+        System.out.println(current + "\\res\\" + Xfile);
+        //File file = new File(current + "\\res\\" + Xfile);
 
+
+        System.out.println(getClass() + "/res/ASCII_titlepic.png");
+
+        ImageIcon icon = new ImageIcon(current + "\\res\\" + Xfile);
+        TPIC.setIcon(icon);
+
+    }
+    catch (Exception e){
+        System.out.println("file not found:"+"\\res\\" + Xfile);
+    }
 
     }
     public String getGstat(){
@@ -74,10 +91,13 @@ public class MENU_MainMenu {
         this.gstat = gstat;
     }
 
+    /**
     private void createUIComponents() {
         // TODO: place custom component creation code here
         JimageC
         JImageComponent ic = new JImageComponent(myImageGoesHere);
         imagePanel.add(ic);
     }
+     */
+
 }

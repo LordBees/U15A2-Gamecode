@@ -896,7 +896,7 @@ public class Gameloop {
         boolean isnew = true;
         while (isrunning){
             //gstat_H = gstat;
-            gstat = "LORB";
+            gstat = "MAIN";
             switch (gstat){
 
                 case"MAIN":
