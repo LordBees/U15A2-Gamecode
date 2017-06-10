@@ -13,6 +13,7 @@ public class MENU_MainMenu {
     private JButton howToPlayButton;
     private JButton startButton;
     private JTextArea welcomeToTheAdventureTextArea;
+    private JLabel TPIC;
 
 
     private String gstat;
@@ -61,10 +62,22 @@ public class MENU_MainMenu {
         });
 
     }
+    public void doimageprep(){
+        ImageIcon icon = createImageIcon("images/middle.gif");
+
+
+    }
     public String getGstat(){
         return this.gstat;
     }
     public void setGstat(String gstat){
         this.gstat = gstat;
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        JimageC
+        JImageComponent ic = new JImageComponent(myImageGoesHere);
+        imagePanel.add(ic);
     }
 }

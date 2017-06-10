@@ -12,13 +12,25 @@ public class MENU_LootOrBlank {
 
     private JButton continueButton;
     private JTextArea textArea1;
+    private int gpickup;
 
-    public MENU_LootOrBlank() {
+    public MENU_LootOrBlank(int gpickup) {
+        this.gpickup = gpickup;
+        do_printing();
+
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
+    }
+    public void do_printing(){
+        if(this.gpickup == 0){
+            textArea1.setText("this is an empty room, please press continue to go to the next room");
+        }
+        else{
+            textArea1.setText("you picked up +Gold:"+this.gpickup+"\n, please press continue to go to the next room");
+        }
     }
 }

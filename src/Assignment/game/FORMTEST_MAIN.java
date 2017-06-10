@@ -55,7 +55,7 @@ public class FORMTEST_MAIN {
 
         JFrame windowFrame_lb = new JFrame("lorb");
         windowFrame_lb.setVisible(true);
-        MENU_LootOrBlank form_lb = new MENU_LootOrBlank();
+        MENU_LootOrBlank form_lb = new MENU_LootOrBlank(0);
         windowFrame_lb.setContentPane(form_lb.gameScreenPanel);
         windowFrame_lb.pack();
         windowFrame_lb.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -69,7 +69,7 @@ public class FORMTEST_MAIN {
 
         JFrame windowFrame_sh = new JFrame("shop");
         windowFrame_sh.setVisible(true);
-        MENU_Shop form_sh = new MENU_Shop();
+        MENU_Shop form_sh = new MENU_Shop(new player(),false);
         windowFrame_sh.setContentPane(form_sh.gameScreenPanel);
         windowFrame_sh.pack();
         windowFrame_sh.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

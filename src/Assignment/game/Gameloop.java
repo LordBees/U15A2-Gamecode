@@ -765,6 +765,8 @@ public class Gameloop {
                        }
                        else if (!currentfight.get_wonfight()) {
                            System.out.println("you got nothing for the fight as you ran away");
+                           gstat = "BLOSE";//check
+                           ignore_room_gstat = true;
 
                        }
                        else {
@@ -821,6 +823,8 @@ public class Gameloop {
 
                case "BWIN":
                    ignore_room_gstat = true;
+                   System.out.println("you won the game by slaying the dragon!!");
+                   gstat = "RSET";
                    break;
 
 
@@ -830,6 +834,7 @@ public class Gameloop {
                    ///
 
                    System.out.println("BAD ending!");
+                   System.out.println("you lost the game and were eaten by the dragon");
 
                    ///
                    gstat = "RSET";
@@ -884,14 +889,14 @@ public class Gameloop {
 
     public void gamemain_windowed(){
         //
-        gstat = "FIGHT";
+        gstat = "SHOP";
         String ftype = "EASY";
 
         //
         boolean isnew = true;
         while (isrunning){
             //gstat_H = gstat;
-            gstat = "SHOP";
+            gstat = "LORB";
             switch (gstat){
 
                 case"MAIN":
@@ -913,12 +918,18 @@ public class Gameloop {
 
                 case"SHOP":
                     if (isnew){
-                        do_win_shop(gstat);
+                        this.phero = do_win_shop(gstat);
                         isnew = false;
                     }
                     break;
 
-                case"f":
+                case"LORB":
+                    if (isnew){
+                        do_win_lorb(gstat,0);
+                        isnew = false;
+                    }
+
+
                     break;
 
                 case"g":
@@ -958,20 +969,21 @@ public class Gameloop {
         windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    public void do_win_shop(String gstat){
+    public player do_win_shop(String gstat){
         JFrame windowFrame_sh = new JFrame("shop");
         windowFrame_sh.setVisible(true);
-        MENU_Shop form_sh = new MENU_Shop();
+        MENU_Shop form_sh = new MENU_Shop(this.phero,false);
         windowFrame_sh.setContentPane(form_sh.gameScreenPanel);
         windowFrame_sh.pack();
         windowFrame_sh.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        return form_sh.updateplayerfromshop();
 
     }
 
-    public void do_win_lorb(String gstat){
+    public void do_win_lorb(String gstat,int gpickup){
         JFrame windowFrame_lb = new JFrame("lorb");
         windowFrame_lb.setVisible(true);
-        MENU_LootOrBlank form_lb = new MENU_LootOrBlank();
+        MENU_LootOrBlank form_lb = new MENU_LootOrBlank(gpickup);
         windowFrame_lb.setContentPane(form_lb.gameScreenPanel);
         windowFrame_lb.pack();
         windowFrame_lb.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
