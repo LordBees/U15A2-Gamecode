@@ -938,8 +938,9 @@ public class Gameloop {
                         //sfxclip.stop();
                         sfxclip.load("Battle.wav", true);
                         sfxclip.play();
-                        //break;//no damag
-                        do_win_fight(1);
+                        //break;//no damage
+                        //do_win_fight(1);
+                        do_win_fight(RNG.nextInt(3));
                         System.out.println(2);
                         isnew = false;//Random RNGstat = new Random();
                     }

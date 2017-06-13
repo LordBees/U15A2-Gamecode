@@ -75,6 +75,7 @@ public class MENU_MainMenu {
 
                     JFrame windowFrame_FI = new JFrame("FIGHT");
                     windowFrame_FI.setVisible(true);
+                    phero.addheal(3);//add 3 heals
                     fight fscale = new fight(phero,new ENT_enemy_easy());
 
                     switch (scale){
@@ -104,6 +105,18 @@ public class MENU_MainMenu {
 
         });
 
+        howToPlayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame windowFrame_h2 = new JFrame("how2");
+                windowFrame_h2.setVisible(true);
+                MENU_HOW2 form_h2 = new MENU_HOW2(new player());
+                windowFrame_h2.setContentPane(form_h2.gameScreenPanel);
+                windowFrame_h2.pack();
+                windowFrame_h2.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                windowFrame_h2.setLocationRelativeTo(null);
+            }
+        });
     }
     public void doimageprep(){
         //ImageIcon icon = createImageIcon("images/middle.gif");

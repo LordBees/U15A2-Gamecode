@@ -48,7 +48,7 @@ public class FORMTEST_MAIN {
 
         JFrame windowFrame_h2 = new JFrame("how2");
         windowFrame_h2.setVisible(true);
-        MENU_HOW2 form_h2 = new MENU_HOW2();
+        MENU_HOW2 form_h2 = new MENU_HOW2(new player());
         windowFrame_h2.setContentPane(form_h2.gameScreenPanel);
         windowFrame_h2.pack();
         windowFrame_h2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
