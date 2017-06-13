@@ -996,6 +996,7 @@ public void gameloop_win2(){
     public void do_win_fight(int scale){
         JFrame windowFrame_FI = new JFrame("FIGHT");
         windowFrame_FI.setVisible(true);
+        windowFrame_FI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fight fscale = new fight(phero,new ENT_enemy_easy());
 
         switch (scale){
@@ -1023,11 +1024,12 @@ public void gameloop_win2(){
 
     public void do_win_main(String gstat){
         JFrame windowFrame_mm = new JFrame("main");
+        windowFrame_mm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//(JFrame.EXIT_ON_CLOSE);
         windowFrame_mm.setVisible(true);
         MENU_MainMenu form_mm = new MENU_MainMenu(gstat,phero);
         windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
         windowFrame_mm.pack();
-        windowFrame_mm.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        //windowFrame_mm.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
     public player do_win_shop(String gstat){

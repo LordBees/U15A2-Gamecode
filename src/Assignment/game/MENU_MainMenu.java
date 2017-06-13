@@ -94,9 +94,10 @@ public class MENU_MainMenu {
 
                     MENU_Fight form_fi = new MENU_Fight(fscale);///here for easy
                     //MENU_Fight form_fi = new MENU_Fight(new fight(phero,new ENT_enemy_easy()));///here for easy
+                    windowFrame_FI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//exit on close
                     windowFrame_FI.setContentPane(form_fi.gameScreenPanel);
                     windowFrame_FI.pack();
-                    windowFrame_FI.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                    //windowFrame_FI.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
                     windowFrame_FI.setLocationRelativeTo(null);
                 }
 
