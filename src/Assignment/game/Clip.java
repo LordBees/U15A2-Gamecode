@@ -5,6 +5,10 @@ import java.applet.AudioClip;
 import java.io.File;
 import java.net.URL;
 
+/**
+ * UNUSED CODE,PUT HERE FOR REFERENCE / SHOWING PROGRESS IN DESIGN
+ */
+
 public class Clip {
 
 

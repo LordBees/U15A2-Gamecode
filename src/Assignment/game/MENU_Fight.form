@@ -17,6 +17,7 @@
         </constraints>
         <properties>
           <background color="-20736"/>
+          <font name="Arial" size="11"/>
           <foreground color="-16777216"/>
           <text value="Attack"/>
         </properties>
@@ -27,6 +28,7 @@
         </constraints>
         <properties>
           <background color="-20736"/>
+          <font name="Arial" size="11"/>
           <foreground color="-16777216"/>
           <text value="Run Away"/>
         </properties>
@@ -37,6 +39,7 @@
         </constraints>
         <properties>
           <background color="-20736"/>
+          <font name="Arial" size="11"/>
           <foreground color="-16777216"/>
           <text value="Defend"/>
         </properties>
@@ -47,6 +50,7 @@
         </constraints>
         <properties>
           <background color="-20736"/>
+          <font name="Arial" size="11"/>
           <foreground color="-16777216"/>
           <text value="Heal"/>
         </properties>
@@ -92,6 +96,7 @@
         </constraints>
         <properties>
           <background color="-20736"/>
+          <font name="Arial" size="11"/>
           <foreground color="-16777216"/>
           <text value="Continue"/>
         </properties>

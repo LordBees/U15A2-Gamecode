@@ -6,7 +6,13 @@ import java.util.Scanner;
 
 /**
  * Created by Spartan 2 on 2017-05-19.
+ *
  */
+
+/**
+ * UNUSED CODE,PUT HERE FOR REFERENCE / SHOWING PROGRESS IN DESIGN
+ */
+
 public class Gameloop_OLD {
     //private Clip bgmclip;
     private SND_handler_main bgmclip = new SND_handler_main();

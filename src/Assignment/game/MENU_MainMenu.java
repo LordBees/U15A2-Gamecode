@@ -24,9 +24,12 @@ public class MENU_MainMenu {
 
 
     private String gstat;
+    private SND_handler_main bgmx = new SND_handler_main();
 
-    public MENU_MainMenu(String gstat,player phero) {
+    public MENU_MainMenu(String gstat,player phero,GUIHANDLER xguis) {
         this.gstat = gstat;
+        bgmx.load("Menu.wav",true);
+        bgmx.play();
 
         doimageprep();
 
@@ -59,6 +62,7 @@ public class MENU_MainMenu {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                bgmx.stop();
                 //This is where our code runs when the button
                 // is clicked
                 //String story = theFight.TakeTurn("a");
@@ -66,6 +70,7 @@ public class MENU_MainMenu {
                 //Gameloop
                 //this.gstat
                 setGstat("");
+                //gstat = "test";
 
                 ///hack to get working
                 int scale;
@@ -108,6 +113,7 @@ public class MENU_MainMenu {
         howToPlayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                bgmx.stop();
                 JFrame windowFrame_h2 = new JFrame("how2");
                 windowFrame_h2.setVisible(true);
                 MENU_HOW2 form_h2 = new MENU_HOW2(new player());

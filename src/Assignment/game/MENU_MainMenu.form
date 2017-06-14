@@ -17,6 +17,7 @@
         </constraints>
         <properties>
           <background color="-20736"/>
+          <font name="Arial" size="11"/>
           <foreground color="-65536"/>
           <text value="how to play"/>
         </properties>
@@ -37,6 +38,7 @@
         </constraints>
         <properties>
           <background color="-20736"/>
+          <font name="Arial" size="11"/>
           <foreground color="-16777216"/>
           <text value="start!"/>
         </properties>
@@ -49,6 +51,7 @@
         </constraints>
         <properties>
           <editable value="false"/>
+          <font name="Arial" size="15" style="1"/>
           <text value="welcome to the adventure game!"/>
         </properties>
       </component>

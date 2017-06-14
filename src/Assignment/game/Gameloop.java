@@ -38,6 +38,9 @@ public class Gameloop {
     //player
     private player phero = new player();
 
+    //screen gui testing
+    private GUIHANDLER guidata = new GUIHANDLER();
+
     //rng
     //rng
     protected Random RNG = new Random();//rng
@@ -209,7 +212,7 @@ public class Gameloop {
         if (iswindowed){
             JFrame windowFrame_mm = new JFrame("main");
             windowFrame_mm.setVisible(true);
-            MENU_MainMenu form_mm = new MENU_MainMenu(this.gstat,phero);
+            MENU_MainMenu form_mm = new MENU_MainMenu(this.gstat,phero,guidata);
             windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
             windowFrame_mm.pack();
             windowFrame_mm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -896,7 +899,8 @@ public class Gameloop {
 
     public void gamemain_windowed(){
         //
-        gstat = "SHOP";
+        //gstat = "SHOP";
+        gstat = "MAIN";
         String ftype = "EASY";
 
         //
@@ -905,7 +909,7 @@ public class Gameloop {
 
         while (isrunning){
             //gstat_H = gstat;
-            gstat = "MAIN";
+            //gstat = "MAIN";
             if (roomsbeaten==20){
                 gstat = "BOSS";
             }
@@ -974,6 +978,14 @@ public class Gameloop {
     }
 
 public void gameloop_win2(){
+        while (isrunning){
+            switch (gstat){
+                case "MAIN":
+                    guidata.do_win_main(gstat,phero,guidata);
+                    break;
+            }
+        }
+}/**
         int leftorright = 0;
         switch (leftorright){
             case 1://left
@@ -986,6 +998,7 @@ public void gameloop_win2(){
             break;
         }
 }
+ */
 
     /////////
 
@@ -1027,7 +1040,7 @@ public void gameloop_win2(){
         JFrame windowFrame_mm = new JFrame("main");
         windowFrame_mm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//(JFrame.EXIT_ON_CLOSE);
         windowFrame_mm.setVisible(true);
-        MENU_MainMenu form_mm = new MENU_MainMenu(gstat,phero);
+        MENU_MainMenu form_mm = new MENU_MainMenu(gstat,phero,guidata);
         windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
         windowFrame_mm.pack();
         //windowFrame_mm.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

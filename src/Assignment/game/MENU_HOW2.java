@@ -20,18 +20,25 @@ public class MENU_HOW2 {
     private JTextArea how2txt;
     private JButton newGameButton;
 
+    private SND_handler_main bgmx = new SND_handler_main();
+
     public MENU_HOW2(player phero) {
 
         ///
 
+        bgmx.load("Mystery.wav",true);
+        bgmx.play();
+
         how2txt.setText("to play the game you must take turns attacking\n" +
-                " a monster until you win oar are defeated by the monster" +
-                "you have 3 heals, you can attack,defend,heal and run away");
+                " a monster until you win oar are defeated by the monster\n" +
+                "you have 3 heals, you can attack,defend,heal and run away by clicking the button\n" +
+                "to restart press continue when the fight has been won/lost");
 
         ///
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                bgmx.stop();
                 //This is where our code runs when the button
                 // is clicked
                 //String story = theFight.TakeTurn("a");

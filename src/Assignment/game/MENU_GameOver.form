@@ -5,7 +5,10 @@
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-16777216"/>
+      <foreground color="-16777216"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="51387" class="javax.swing.JTextArea" binding="betterLuckNextTimeTextArea" default-binding="true">
@@ -16,6 +19,7 @@
         </constraints>
         <properties>
           <editable value="false"/>
+          <font name="Arial" size="15" style="1"/>
           <text value="Better Luck Next Time!"/>
         </properties>
       </component>
@@ -39,6 +43,10 @@
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-20736"/>
+          <enabled value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-16777216"/>
           <text value="retry"/>
         </properties>
       </component>
@@ -47,6 +55,10 @@
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-20736"/>
+          <enabled value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-16777216"/>
           <text value="exit"/>
         </properties>
       </component>
@@ -55,6 +67,10 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-20736"/>
+          <enabled value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-16777216"/>
           <text value="how to play"/>
         </properties>
       </component>

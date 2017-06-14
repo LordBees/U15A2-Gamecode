@@ -55,7 +55,7 @@ public class window_guih {//testing
     public void do_win_main(String gstat){
         JFrame windowFrame_mm = new JFrame("main");
         windowFrame_mm.setVisible(true);
-        MENU_MainMenu form_mm = new MENU_MainMenu(gstat,phero);
+        MENU_MainMenu form_mm = new MENU_MainMenu(gstat,phero,new GUIHANDLER());
         windowFrame_mm.setContentPane(form_mm.gameScreenPanel);
         windowFrame_mm.pack();
         windowFrame_mm.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

@@ -28,10 +28,13 @@ public class MENU_Fight {
     private String storyx = "";
     //private String[] stancedata;
     //private int noheals;
+    private SND_handler_main bgmx = new SND_handler_main();
 
 
     public  MENU_Fight(fight battlex) {
         this.battlex = battlex;
+        bgmx.load("Battle.wav",true);
+        bgmx.play();
 
         attackButton.addActionListener(new ActionListener() {
             @Override
@@ -47,6 +50,10 @@ public class MENU_Fight {
                 else{
                     System.out.println("currently not fighting!");
                     update_battlelog("currently not fighting!");
+                    if (battlex.get_wonfight()){
+                        System.out.println("You Won!");
+                        update_battlelog("You Won!!");
+                    }
                 }
             }
         });
@@ -62,6 +69,10 @@ public class MENU_Fight {
                 else{
                     System.out.println("currently not fighting!");
                     update_battlelog("currently not fighting!");
+                    if (battlex.get_wonfight()){
+                        System.out.println("You Won!");
+                        update_battlelog("You Won!!");
+                    }
                 }
 
             }
@@ -78,6 +89,10 @@ public class MENU_Fight {
                 else{
                     System.out.println("currently not fighting!");
                     update_battlelog("currently not fighting!");
+                    if (battlex.get_wonfight()){
+                        System.out.println("You Won!");
+                        update_battlelog("You Won!!");
+                    }
                 }
 
             }
@@ -94,6 +109,7 @@ public class MENU_Fight {
                 else{
                 System.out.println("currently not fighting!");
                     update_battlelog("currently not fighting!");
+
                 }
             }
         });
@@ -103,6 +119,8 @@ public class MENU_Fight {
             public void actionPerformed(ActionEvent e) {
                 if (!battlex.get_isfighting_win()) {
                     update_battlelog("you leave the room");
+                    gameScreenPanel.setVisible(false);
+                    bgmx.stop();
                     //datstat = "c";
                     //gameScreenPanel.setVisible(false);
                     //gameScreenPanel.setVisible(false);
@@ -151,6 +169,7 @@ public class MENU_Fight {
                     windowFrame_FI.pack();
                     //windowFrame_FI.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
                     windowFrame_FI.setLocationRelativeTo(null);
+
 
                 }
                 else{
