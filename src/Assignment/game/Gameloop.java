@@ -173,6 +173,7 @@ public class Gameloop {
             System.out.println("do you wish to enable windowed mode\n" +
                                "Type(Y)/(N)");
             chs = this.get_user_input();
+            //chs = "Y";
             if(chs.toUpperCase().equals("Y")){
                 iswindowed = true;
                 runningvar = false;

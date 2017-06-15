@@ -15,6 +15,9 @@
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="ATK"/>
         </properties>
       </component>
@@ -23,6 +26,9 @@
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="HEALTH"/>
         </properties>
       </component>
@@ -31,6 +37,9 @@
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="DEF"/>
         </properties>
       </component>
@@ -39,6 +48,9 @@
           <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="Buy(+1)"/>
         </properties>
       </component>
@@ -47,6 +59,9 @@
           <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="Buy(+1)"/>
         </properties>
       </component>
@@ -55,6 +70,9 @@
           <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="Buy(+10)"/>
         </properties>
       </component>
@@ -65,7 +83,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value=""/>
         </properties>
       </component>
@@ -76,7 +97,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value=""/>
         </properties>
       </component>
@@ -87,7 +111,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value=""/>
         </properties>
       </component>
@@ -98,7 +125,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value=""/>
         </properties>
       </component>
@@ -109,7 +139,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value=""/>
         </properties>
       </component>
@@ -135,7 +168,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value=""/>
         </properties>
       </component>
@@ -149,6 +185,9 @@
           <grid row="11" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="Upgrade Sword(40)"/>
         </properties>
       </component>
@@ -160,6 +199,7 @@
         </constraints>
         <properties>
           <editable value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <hspacer id="b7c24">
@@ -182,6 +222,9 @@
           <grid row="3" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="HP POTION"/>
         </properties>
       </component>
@@ -190,6 +233,9 @@
           <grid row="3" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="Buy(+1)"/>
         </properties>
       </component>
@@ -198,6 +244,9 @@
           <grid row="12" column="15" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="Continue"/>
         </properties>
       </component>
@@ -213,8 +262,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
-          <font name="Lucida Sans Typewriter" size="22" style="1"/>
+          <font name="Arial" size="15" style="1"/>
+          <foreground color="-1352692"/>
           <text value="WELCOME TO THE SHOP!"/>
         </properties>
       </component>
@@ -245,7 +296,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value=""/>
         </properties>
       </component>
@@ -261,7 +315,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="Current Stats"/>
         </properties>
       </component>
@@ -272,7 +329,9 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <foreground color="-20736"/>
           <text value="No.Potions carried"/>
         </properties>
       </component>
@@ -299,7 +358,9 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <foreground color="-20736"/>
           <text value="cost"/>
         </properties>
       </component>
@@ -310,7 +371,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="cost"/>
         </properties>
       </component>
@@ -321,7 +385,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value=""/>
         </properties>
       </component>
@@ -332,7 +399,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <editable value="false"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
         </properties>
       </component>
       <component id="d757f" class="javax.swing.JLabel">
@@ -340,6 +410,9 @@
           <grid row="12" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Arial" size="11"/>
+          <foreground color="-20736"/>
           <text value="Your Gold:"/>
         </properties>
       </component>
