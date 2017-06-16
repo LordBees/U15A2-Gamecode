@@ -978,6 +978,8 @@ public class Gameloop {
 
     }
 
+
+    /**
 public void gameloop_win2(){
         while (isrunning){
             switch (gstat){
@@ -986,7 +988,9 @@ public void gameloop_win2(){
                     break;
             }
         }
-}/**
+}
+*/
+/**
         int leftorright = 0;
         switch (leftorright){
             case 1://left

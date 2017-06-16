@@ -510,7 +510,7 @@ public class fight {
         }
 
     }
-public boolean get_isfighting_win(){
+    public boolean get_isfighting_win(){
     return this.fighting;
 }
     public Boolean get_wonfight(){
