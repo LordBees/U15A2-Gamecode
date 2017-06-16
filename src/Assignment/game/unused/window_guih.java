@@ -1,9 +1,14 @@
-package Assignment.game;
+package Assignment.game.unused;
 
+import Assignment.game.*;
 import Assignment.game.Ents.ENT_enemy_boss;
 import Assignment.game.Ents.ENT_enemy_easy;
 import Assignment.game.Ents.ENT_enemy_hard;
 import Assignment.game.Ents.ENT_enemy_med;
+
+
+//fix for class
+import Assignment.game.fight;
 
 import javax.swing.*;
 

@@ -1,4 +1,4 @@
-package Assignment.game;
+package Assignment.game.unused;
 
 /**
  * Created by Spartan 2 on 2017-06-07.

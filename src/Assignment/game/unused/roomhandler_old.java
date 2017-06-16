@@ -1,4 +1,6 @@
-package Assignment.game;
+package Assignment.game.unused;
+
+import Assignment.game.RoomParent;
 
 /**
  * Created by 10740071 on 23/05/2017.

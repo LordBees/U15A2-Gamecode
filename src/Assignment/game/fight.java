@@ -31,7 +31,7 @@ public class fight {
     private String[] stance = {"NONE","NONE"};//valid none,atk,def,heal,die?,run
     public String [] data2r = new String[2];
 
-    fight(player playerx,entity foe) {
+    public fight(player playerx,entity foe) {
         this.playerx = playerx;
         this.foe = foe;
         //this.iswindowed = iswindowed;
