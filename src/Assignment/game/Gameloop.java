@@ -876,6 +876,11 @@ public class Gameloop {
                    }
                    else  if (chs.equals("H")){
                         System.out.println("how2play");
+                        System.out.println("" +
+                                "\n" +
+                                "\n" +
+                                "\n" +
+                                "\nto see more please consult the manual for more detailed information");
 
                    }
                    else{
