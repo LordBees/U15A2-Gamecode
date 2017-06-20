@@ -878,7 +878,7 @@ public class Gameloop {
                        setquittime(false);
                    }
                    else  if (chs.equals("H")){
-                        System.out.println("how2play");
+                        System.out.println("how2play");//helptext needs to be put into how2 at top as well
                         System.out.println(
                                 "abridged controls:" +
                                 "\n if a character is in brackets you can type it to do something eg (L) or (C)" +
