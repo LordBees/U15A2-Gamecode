@@ -37,6 +37,7 @@ public class ROOM_encounter extends RoomParent {
             //this.currentfight = new fight(this.player);//@@@
     //    }
     //}
+    //gets monster names form fight
     public String[] getmnames(){
         String[] datx = new String[foes.length];
 

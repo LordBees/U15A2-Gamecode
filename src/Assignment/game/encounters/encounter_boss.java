@@ -11,7 +11,7 @@ import Assignment.game.entity;
 public class encounter_boss extends encounter {
     //
 
-    //
+    // setting boss data
     public encounter_boss(){
         this.foes = new entity[]{new ENT_enemy_boss()};
     }

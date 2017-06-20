@@ -3,8 +3,10 @@ package Assignment.game;
 /**
  * Created by 10740071 on 23/05/2017.
  */
+
+//roomhandler class for holding information about the current room
 public class roomhandler {
-    //
+    //attributes
     private RoomParent loadedroom;
 
     private int currentroom;
@@ -17,10 +19,9 @@ public class roomhandler {
     private int[] forks = {};
 
 
-    //
+    //constructor(if used)
 
-    //
-
+    //methods
     public void LoadRoom(RoomParent new_room){
         System.out.println("loading room:"+new_room.roomid);
         //System.out.println("branchdata-:"+new_room.get_roomforks()[0]);
@@ -73,7 +74,7 @@ public class roomhandler {
         return loadedroom.get_roomforks().length;
     }
 
-    //determines whet to load into room
+    //determines what to load into room
     public String getCombattype() {
         //return combattype;
         return loadedroom.getroomdificulty();

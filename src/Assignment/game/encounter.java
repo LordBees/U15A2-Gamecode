@@ -16,6 +16,8 @@ public class encounter extends RoomParent {
     //}
 
     //
+
+    //test fighting implementation--currently unused
     protected void room_fight(player playerx){//take player data for fighting
         boolean playersurvived = false;
         fight currentfight;

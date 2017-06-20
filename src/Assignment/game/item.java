@@ -3,6 +3,8 @@ package Assignment.game;
 /**
  * Created by Spartan 2 on 2017-05-19.
  */
+
+//parent superclass for items
 public class item {
     protected String I_name = "Generic Thing";//stores name of item
     protected int I_ShopCost = 0;//stores cost at shop

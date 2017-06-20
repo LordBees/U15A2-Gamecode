@@ -4,6 +4,9 @@ import Assignment.game.Ents.ENT_enemy_easy;
 
 import javax.swing.*;
 
+
+//testing -displays all forms onto the screen
+
 public class FORMTEST_MAIN {
 
     public static void main(String[] args) {

@@ -6,12 +6,15 @@ import Assignment.game.items.hvial;
 /**
  * Created by Spartan 2 on 2017-05-19.
  */
+
+//the class for handling players
 public class player extends entity {
     private int goldcarried = 10;//gold carried by player
     private item[] inventory = new item[10];//items carried
     //private int Inv_stat [] = {0,0,0};//atk def heal
     //private int atk
 
+    //setup player
     public player() {
         //entity[] inventory = new inventory {};
         //this.inventory(new hvial());
@@ -25,6 +28,7 @@ public class player extends entity {
         this.E_name="PLAYER";
     }
 
+    //methods for interacting with player
     public void pickup_gold(int goldcollected){//add gold to the players inventory
         System.out.println("\nDBG:you picked up "+goldcollected+" gold!");
         this.goldcarried = this.goldcarried + goldcollected;

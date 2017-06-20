@@ -19,6 +19,7 @@ public class ROOM_loot extends RoomParent {
     public ROOM_loot() {
         roombgm = "GotLoot.wav";
         rtype = "LOOT";
+        //set loot and roll rng for bags for gold contents
         this.lootin[0] = new gold_bag();
         this.lootin[1] = new gold_bag();
         rngroom();

@@ -37,6 +37,7 @@ public class fight {
         //this.iswindowed = iswindowed;
     }
 
+    //main fight loop for cli
     public boolean fighterloop(){
         boolean playersurvived = false;
         wonfight = false;
@@ -126,8 +127,7 @@ public class fight {
         return playersurvived;
     }
 
-
-
+    //internal fight functions
     public void playerattack(){
         //this.playerx.do_attack(this.foe);
         stance[0] = "ATK";
@@ -158,6 +158,7 @@ public class fight {
 
     }
 
+    //resolve turn for cli
     public void resolveturn(){
         //resolves fight based on turn state
 
@@ -289,7 +290,7 @@ public class fight {
         this.resetstance_all();
     }
 
-
+    //modified loop for gui version
     public boolean fighterloop_win(){
         boolean playersurvived = false;
         wonfight = false;
@@ -324,6 +325,7 @@ public class fight {
         return playersurvived;
     }
 
+    //modified version to handle window loop
     public void resolveturn_win(String popt){//player option ///hack
 
         System.out.println("FIGHTWIN data :"+popt+"\n____!!!!____----");
@@ -478,6 +480,8 @@ public class fight {
         //return data2r;
     }
 
+
+    //other methods
     public void resetstance_all(){
         stance[0] = "NONE";
         stance[1] = "NONE";

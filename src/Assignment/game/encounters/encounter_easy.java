@@ -10,7 +10,7 @@ import Assignment.game.entity;
 public class encounter_easy extends encounter {
     //
 
-    //
+    // setting fight room data
     public encounter_easy(){
         this.foes = new entity[]{new ENT_enemy_easy()};
     }

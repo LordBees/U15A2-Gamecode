@@ -12,15 +12,16 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 /**
  * Created by Spartan 2 on 2017-05-25.
  */
+//sound code
 public class SND_handler_main {
     //public class Sound {
     //clip
     private Clip clipsnd;
 
-    private String sndpath = "\\res\\snd\\";
-    private boolean isplaying = false;
-    private boolean isbgm = false;
-    private String filen = "";
+    private String sndpath = "\\res\\snd\\";//filepath to sound so only have to specify filename
+    private boolean isplaying = false;//is playing currently?
+    private boolean isbgm = false;//is background
+    private String filen = "";//current filename
     private String lfilen = "";//last filename
 
     //SND_handler_main(String Xfile,boolean xisbgm) {

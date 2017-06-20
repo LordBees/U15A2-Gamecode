@@ -12,5 +12,5 @@ public class gold_bag extends gold {
     }
     public void changevalue(int new_I_value){//changed amount in bag
         this.I_value = new_I_value;
-    }
+    }//changes gold value
 }

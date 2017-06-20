@@ -17,6 +17,8 @@ import java.util.Random;
 /**
  * UNUSED CODE,PUT HERE FOR REFERENCE / SHOWING PROGRESS IN DESIGN
  */
+
+//test gui handling code for new implementation
 public class GUIHANDLER {
     private player phero = new player();
     //public GUIHANDLER(player phero){

@@ -7,6 +7,9 @@ import java.util.Random;
 /**
  * Created by Spartan 2 on 2017-05-19.
  */
+
+//parent superclass for rooms that have something in them
+
 public class RoomParent {
     //has array of execuatable objects that are passed to the  invoker
     //attributes
@@ -20,7 +23,7 @@ public class RoomParent {
     protected int nextid =0;
     protected int shopid = -1;
 
-    //quick hack
+    //quick hack for defining forks(forcing)
     protected int[] dirx = {-1,-1,-1};//= new int[3];
 
     //loot stuff
@@ -45,24 +48,24 @@ public class RoomParent {
     //methods
     public void setroomdifficulty(String dfx){
         this.roomdifficulty = dfx;
-    }
+    }//sets room difficulty variable
     public String getroomdificulty(){
         return this.roomdifficulty;
-    }
+    }//gets room difficulty variable
     public void enterroom(){//called when player enters room
         System.out.println(this.enterstring);
 
     }
     public void winroom(){//called if victory condition met in room
 
-    }
+    }//when room won(test)
 
     public int getshopid(){
         return this.shopid;
-    }
+    }// gets the shopid
     public void setshopid(int ix){
         this.shopid = ix;
-    }
+    }//stes the shopid
 
     public int[] get_roomforks(){
         return this.dirx;
@@ -98,7 +101,7 @@ public class RoomParent {
     }
 
 
-    ///loot room stuff
+    ///loot room stuff (rolling loot,giving when won etc..)
     public void rngroom(){
         int nogold = RNG.nextInt(maxgold-1);//no of coins in room
         int lootbag = RNG.nextInt(100);

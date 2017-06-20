@@ -161,6 +161,8 @@ public class Gameloop {
 
 
     }
+
+    //initialisation before gameloop
     public void run(){
         System.out.println("-<starting game");
 
@@ -208,6 +210,7 @@ public class Gameloop {
         bgmclip.stop();
     }
 
+    //main loop for game
     public void gamemain(){
         //String gstat = "PROL";//prologue  //moved up to class
         if (iswindowed){
@@ -876,10 +879,12 @@ public class Gameloop {
                    }
                    else  if (chs.equals("H")){
                         System.out.println("how2play");
-                        System.out.println("" +
-                                "\n" +
-                                "\n" +
-                                "\n" +
+                        System.out.println(
+                                "abridged controls:" +
+                                "\n if a character is in brackets you can type it to do something eg (L) or (C)" +
+                                "\n to start the game you  press n for new game" +
+                                "\nto buy somwthing in the shop  type the letter in brackets to " +
+                                "\nattempt to buy the item, if you do not have enough gold you will not be able to buy the item" +
                                 "\nto see more please consult the manual for more detailed information");
 
                    }
@@ -902,7 +907,7 @@ public class Gameloop {
        }
     }
 
-
+    //modified for gui(reduced featureset atm)
     public void gamemain_windowed(){
         //
         //gstat = "SHOP";
