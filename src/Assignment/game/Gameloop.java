@@ -879,6 +879,8 @@ public class Gameloop {
                    }
                    else  if (chs.equals("H")){
                         System.out.println("how2play");//helptext needs to be put into how2 at top as well
+
+                       //helptext
                         System.out.println(
                                 "abridged controls:" +
                                 "\n if a character is in brackets you can type it to do something eg (L) or (C)" +
@@ -886,6 +888,7 @@ public class Gameloop {
                                 "\nto buy somwthing in the shop  type the letter in brackets to " +
                                 "\nattempt to buy the item, if you do not have enough gold you will not be able to buy the item" +
                                 "\nto see more please consult the manual for more detailed information");
+                        //helptext end
 
                    }
                    else{
