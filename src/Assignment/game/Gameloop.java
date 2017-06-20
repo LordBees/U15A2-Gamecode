@@ -232,7 +232,7 @@ public class Gameloop {
                         "\n\n_______________________________________________________________________________" +
                                 "\nabridged controls:" +
                                 "\n if a character is in brackets you can type it to do something eg (L) or (C)" +
-                                "\n to start the game you  press n for new game typinh h will bring up this menu" +
+                                "\n to start the game you  press n for new game typing h will bring up this menu" +
                                 "\nto buy something in the shop type the letter in brackets to" +
                                 "\nattempt to buy the item, if you do not have enough gold you will not be able to buy the item" +
                                 "\n the super sword adds 10 damage to your attack " +
@@ -244,7 +244,7 @@ public class Gameloop {
                                 "\n (A) attack the monster" +
                                 "\n(D) defend against an attack if made" +
                                 "\n(H) heal your character" +
-                                "\n(R) run away from the fight, forefitting any gold and taking damage if" +
+                                "\n(R) run away from the fight, forfeiting any gold and taking damage if" +
                                 "\nthe creature attacks when you run away" +
                                 "\n" +
                                 "\nto see more please consult the manual for more detailed information" +
@@ -910,7 +910,7 @@ public class Gameloop {
                                 "\n\n_______________________________________________________________________________" +
                                 "\nabridged controls:" +
                                 "\n if a character is in brackets you can type it to do something eg (L) or (C)" +
-                                "\n to start the game you  press n for new game typinh h will bring up this menu" +
+                                "\n to start the game you  press n for new game, typing h will bring up this menu" +
                                 "\nto buy something in the shop type the letter in brackets to" +
                                 "\nattempt to buy the item, if you do not have enough gold you will not be able to buy the item" +
                                 "\n the super sword adds 10 damage to your attack " +
@@ -922,7 +922,7 @@ public class Gameloop {
                                 "\n (A) attack the monster" +
                                 "\n(D) defend against an attack if made" +
                                 "\n(H) heal your character" +
-                                "\n(R) run away from the fight, forefitting any gold and taking damage if" +
+                                "\n(R) run away from the fight, forfeiting any gold and taking damage if" +
                                 "\nthe creature attacks when you run away" +
                                 "\n" +
                                 "\nto see more please consult the manual for more detailed information" +
