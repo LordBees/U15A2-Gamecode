@@ -227,6 +227,29 @@ public class Gameloop {
             chs = this.get_user_input();
             if (chs.toUpperCase().equals("H")) {
                 System.out.println("help:");
+                //helptext
+                System.out.println(
+                        "\n\n_______________________________________________________________________________" +
+                                "\nabridged controls:" +
+                                "\n if a character is in brackets you can type it to do something eg (L) or (C)" +
+                                "\n to start the game you  press n for new game typinh h will bring up this menu" +
+                                "\nto buy something in the shop type the letter in brackets to" +
+                                "\nattempt to buy the item, if you do not have enough gold you will not be able to buy the item" +
+                                "\n the super sword adds 10 damage to your attack " +
+                                "\n the attack stat item adds to your attack value" +
+                                "\n the defence item adds to your damage reduction modifier when being attacked" +
+                                "\n the potions you buy can be used once per turn to heal 10hp each" +
+                                "\n the health increase increases your HP by 10" +
+                                "\n to fight a monster you may choose either:" +
+                                "\n (A) attack the monster" +
+                                "\n(D) defend against an attack if made" +
+                                "\n(H) heal your character" +
+                                "\n(R) run away from the fight, forefitting any gold and taking damage if" +
+                                "\nthe creature attacks when you run away" +
+                                "\n" +
+                                "\nto see more please consult the manual for more detailed information" +
+                                "\n\n_______________________________________________________________________________");
+                //helptext end
             } else {
                 System.out.println("starting game");
             }
@@ -869,8 +892,10 @@ public class Gameloop {
                    chs = this.get_user_input();
                    chs = chs.toUpperCase();
                    if (chs.equals("Y")){
-                       System.out.println("restarting game >UNIMP");
+                       System.out.println("restarting game");// >UNIMP");
                        this.isrunning = false;
+                       Gameloop subg = new Gameloop();
+                       subg.run();
                     }
                     else if (chs.equals("N")){
                        this.isrunning = false;
@@ -882,12 +907,26 @@ public class Gameloop {
 
                        //helptext
                         System.out.println(
-                                "abridged controls:" +
+                                "\n\n_______________________________________________________________________________" +
+                                "\nabridged controls:" +
                                 "\n if a character is in brackets you can type it to do something eg (L) or (C)" +
-                                "\n to start the game you  press n for new game" +
-                                "\nto buy somwthing in the shop  type the letter in brackets to " +
+                                "\n to start the game you  press n for new game typinh h will bring up this menu" +
+                                "\nto buy something in the shop type the letter in brackets to" +
                                 "\nattempt to buy the item, if you do not have enough gold you will not be able to buy the item" +
-                                "\nto see more please consult the manual for more detailed information");
+                                "\n the super sword adds 10 damage to your attack " +
+                                "\n the attack stat item adds to your attack value" +
+                                "\n the defence item adds to your damage reduction modifier when being attacked" +
+                                "\n the potions you buy can be used once per turn to heal 10hp each" +
+                                "\n the health increase increases your HP by 10" +
+                                "\n to fight a monster you may choose either:" +
+                                "\n (A) attack the monster" +
+                                "\n(D) defend against an attack if made" +
+                                "\n(H) heal your character" +
+                                "\n(R) run away from the fight, forefitting any gold and taking damage if" +
+                                "\nthe creature attacks when you run away" +
+                                "\n" +
+                                "\nto see more please consult the manual for more detailed information" +
+                                "\n\n_______________________________________________________________________________");
                         //helptext end
 
                    }
